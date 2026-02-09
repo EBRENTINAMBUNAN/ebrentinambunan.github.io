@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak · Ebren Tinambunan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="contact">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
+
+    <main class="shell">
+      <div class="section-heading" style="margin-bottom: 1.2rem">
+        <h2>Kontak</h2>
+        <span class="line"></span>
+      </div>
+      <p class="muted" style="margin-bottom: 1rem">
+        Kolaborasi, konsultasi, atau sekadar berdiskusi ide baru.
+      </p>
+
+      <div class="info-grid" id="info-grid"></div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="marquee-container">
+            <div class="marquee-text">
+              <a href="https://wa.me/6281234567890" target="_blank">
+                Klik di sini untuk menghubungi saya lewat WhatsApp sekarang!
+              </a>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top: 1rem">Ikuti saya</p>
+          <div class="social-icons">
+            <a
+              href="https://instagram.com/ebren_tinambunan"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://github.com/ebrentinambunan"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+
+        <form
+          action="mailto:bendev403@gmail.com"
+          method="POST"
+          enctype="text/plain"
+        >
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+
+      <div class="accent-band">
+        <div>
+          <p class="eyebrow" id="contact-eyebrow">Terbuka untuk kolaborasi</p>
+          <h3 id="contact-heading">
+            Ceritakan konteksmu, saya balas dengan ide cepat dan langkah
+            realistis.
+          </h3>
+        </div>
+        <div class="band-actions">
+          <a class="btn btn-secondary" href="projects.html" id="contact-secondary"
+            >Lihat proyek</a
+          >
+          <a class="btn btn-primary" href="mailto:bendev403@gmail.com" id="contact-primary"
+            >Email sekarang</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="index.html" data-page="home" title="Beranda">
+        <span class="material-icons">home</span>
+      </a>
+      <a href="projects.html" data-page="projects" title="Proyek">
+        <span class="material-icons">work</span>
+      </a>
+      <a href="about.html" data-page="about" title="Tentang Saya">
+        <span class="material-icons">person</span>
+      </a>
+      <a href="contact.html" data-page="contact" title="Kontak">
+        <span class="material-icons">mail</span>
+      </a>
+    </nav>
+
+    <script
+      src="https://kit.fontawesome.com/3f8ab955ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

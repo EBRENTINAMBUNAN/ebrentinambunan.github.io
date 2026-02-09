@@ -1,0 +1,120 @@
+{
+  "profile": {
+    "name": "Ebren Tinambunan",
+    "headline": "Fullstack Developer",
+    "availability": "Tersedia untuk Remote / On-site",
+    "roleTag": "Fullstack Engineer",
+    "lead": "Saya meramu produk web dari ide mentah menjadi pengalaman elegan: arsitektur backend rapi, UI mobile-first, dan rollout tanpa drama.",
+    "typing": [
+      "Builder yang senang memulai dari brief singkat.",
+      "Laravel + Tailwind + Docker: kombinasi andalan saya.",
+      "UI yang mewah, backend yang rapi, rilis yang tenang.",
+      "Ship cepat, ukur, iterasi—tanpa mengorbankan kualitas.",
+      "Nyaman kolaborasi remote maupun on-site."
+    ],
+    "miniCard": "Laravel · Tailwind · Docker · Cloudflare · cPanel · CI/CD",
+    "metrics": [
+      { "label": "Proyek rilis", "value": "18+" },
+      { "label": "Stack inti", "value": "5" },
+      { "label": "Respons cepat", "value": "≤2 jam" }
+    ]
+  },
+  "certificates": [
+    {
+      "title": "IMPHNEN",
+      "desc": "Data & API fundamentals",
+      "image": "assets/img/certificate1.png"
+    },
+    {
+      "title": "Dicoding",
+      "desc": "Back-End Pemula",
+      "image": "assets/img/certificate1.png"
+    }
+  ],
+  "strengths": [
+    {
+      "icon": "🧭",
+      "title": "Builder Mindset",
+      "desc": "Dari brief singkat, saya bentuk arsitektur, komponen, dan alur pengguna yang terasa natural.",
+      "bullets": ["Mulai kecil, ship cepat, ukur ulang", "Struktur modular + catatan singkat", "Fondasi siap di-scale"]
+    },
+    {
+      "icon": "✨",
+      "title": "UX-First Implementation",
+      "desc": "Microcopy, ritme spacing, dan performa saya jaga supaya UI mewah tanpa terasa berat.",
+      "bullets": ["Mobile-first, interaksi halus", "State jelas & aman", "Perf: cache, lazyload, minim request"]
+    },
+    {
+      "icon": "🛡️",
+      "title": "Operational Calm",
+      "desc": "Setelah rilis tetap tenang: logging ringan, guard input, dan playbook singkat untuk tim.",
+      "bullets": ["Checklist rilis singkat", "Hardening input & auth", "Handover + changelog jelas"]
+    }
+  ],
+  "ctaBrand": {
+    "eyebrow": "Personal brand",
+    "heading": "Pengembang yang menyatukan backend rapi, UI elegan, dan delivery tenang.",
+    "primaryText": "Ajak berkolaborasi",
+    "secondaryText": "Lihat karya"
+  },
+  "projects": [
+    {
+      "title": "Aplikasi Penjualan UMKM",
+      "tag": "Web App · Responsive",
+      "summary": "Platform penjualan dengan dashboard real-time, manajemen produk, multi-role (pemilik, kasir), serta optimasi loading untuk jaringan lambat.",
+      "role": "Peran: arsitektur backend, desain UI, implementasi frontend, deployment cPanel + Docker staging.",
+      "image": "assets/img/project.png",
+      "demo": "assets/mp4/project.mp4",
+      "code": "https://github.com/ebrentinambunan"
+    }
+  ],
+  "projectStats": [
+    { "label": "Page load", "value": "~1.0s", "desc": "Optimasi asset, lazyload, dan preconnect" },
+    { "label": "Rollback", "value": "< 2 menit", "desc": "Staging + backup ringan sebelum rilis" },
+    { "label": "Hand-off", "value": "Playbook", "desc": "Catatan singkat untuk tim operasional" }
+  ],
+  "testimonial": {
+    "quote": "Build-nya cepat, tapi yang paling terasa adalah UI yang halus dan dokumentasi singkat untuk tim kami.",
+    "name": "Client Retail"
+  },
+  "timeline": [
+    {
+      "year": "2025",
+      "title": "Micro SaaS eksperimen",
+      "desc": "Merilis MVP < 4 minggu: auth sederhana, billing percobaan, dan landing konversi tinggi."
+    },
+    {
+      "year": "2024",
+      "title": "SaaS kecil untuk UMKM",
+      "desc": "Bangun modul penjualan & laporan dengan fokus mobile-first dan deployment cPanel + Docker staging."
+    },
+    {
+      "year": "2023",
+      "title": "Internal dashboard",
+      "desc": "Integrasi API, hardening auth, dan optimasi query untuk laporan keuangan harian."
+    },
+    {
+      "year": "2022",
+      "title": "Onboarding tooling",
+      "desc": "Menyusun toolkit onboarding dev + dokumentasi singkat agar ramp-up lebih cepat."
+    }
+  ],
+  "values": [
+    { "title": "Transparan", "desc": "Progress rutin, demo build, dan catatan changelog singkat." },
+    { "title": "Pragmatis", "desc": "Pakai tool secukupnya; mudah di-maintain tim Anda." },
+    { "title": "Ketahanan", "desc": "Fokus ke performa, keamanan input, dan fallback." },
+    { "title": "Empati", "desc": "UI yang ramah pengguna dan dev handover yang ramah tim." }
+  ],
+  "infoCards": [
+    { "label": "Response time", "value": "≤ 2 jam", "desc": "Di jam kerja, lebih cepat via WhatsApp/Email." },
+    { "label": "Zona waktu", "value": "WIB (GMT+7)", "desc": "Fleksibel untuk kolaborasi remote." },
+    { "label": "Channel", "value": "WA · Email · GMeet", "desc": "Pilih media yang paling nyaman." },
+    { "label": "Bahasa", "value": "ID / EN", "desc": "Bisa kolaborasi bilingual." }
+  ],
+  "contactCTA": {
+    "eyebrow": "Terbuka untuk kolaborasi",
+    "heading": "Ceritakan konteksmu, saya balas dengan ide cepat dan langkah realistis.",
+    "primaryText": "Email sekarang",
+    "secondaryText": "Lihat proyek"
+  }
+}

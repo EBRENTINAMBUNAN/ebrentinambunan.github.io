@@ -1,0 +1,65 @@
+{
+  "profile": {
+    "name": "Ebren Tinambunan",
+    "headline": "Fullstack Developer",
+    "availability": "Siap Remote / Hybrid",
+    "roleTag": "Fullstack Engineer",
+    "lead": "Saya merancang produk web dari ide ke rilis: fondasi backend rapi, UI mobile-first yang terasa premium, dan dokumentasi singkat agar tim cepat mandiri.",
+    "typing": [
+      "Builder yang senang bikin jalan setapak jadi jalan tol.",
+      "Laravel + Tailwind + Docker: trio andalan untuk rilis cepat.",
+      "UX mulus, performa stabil, rilis tanpa drama.",
+      "Ship cepat, ukur, iterasi—dengan changelog yang jelas.",
+      "Nyaman kolaborasi lintas zona: ID & EN."
+    ],
+    "miniCard": "Laravel · Tailwind · Docker · Cloudflare · cPanel · CI/CD",
+    "metrics": [
+      { "label": "Proyek produksi", "value": "20" },
+      { "label": "On-time delivery", "value": "96%" },
+      { "label": "NPS internal", "value": "9/10" }
+    ]
+  },
+  "certificates": [
+    {
+      "title": "IMPHNEN",
+      "desc": "Data & API fundamentals",
+      "image": "assets/img/certificate1.png"
+    },
+    {
+      "title": "Dicoding",
+      "desc": "Back-End Pemula",
+      "image": "assets/img/certificate1.png"
+    },
+    {
+      "title": "FreeCodeCamp",
+      "desc": "Responsive Web Design",
+      "image": "assets/img/certificate1.png"
+    }
+  ],
+  "strengths": [
+    {
+      "icon": "🧭",
+      "title": "Builder Mindset",
+      "desc": "Mulai dari brief singkat, saya susun arsitektur, alur, dan prioritas yang bisa dieksekusi sprint demi sprint.",
+      "bullets": ["Ship cepat dengan scope terukur", "Struktur modular + catatan 1-2 halaman", "Siap scale tanpa refactor besar"]
+    },
+    {
+      "icon": "✨",
+      "title": "UX-First Implementation",
+      "desc": "Microcopy, ritme spacing, dan interaksi halus agar produk terasa premium namun ringan.",
+      "bullets": ["Mobile-first, animasi seperlunya", "State jelas, error ramah pengguna", "Perf: cache, lazyload, preconnect"]
+    },
+    {
+      "icon": "🛡️",
+      "title": "Operational Calm",
+      "desc": "Setelah rilis tetap tenang: guard input, logging ringkas, SOP rollback 2 menit.",
+      "bullets": ["Checklist rilis dan rollback", "Hardening auth & form", "Handover + changelog untuk tim"]
+    }
+  ],
+  "ctaBrand": {
+    "eyebrow": "Personal brand",
+    "heading": "Pengembang yang menggabungkan backend solid, UI elegan, dan delivery yang tenang.",
+    "primaryText": "Ajak kolaborasi",
+    "secondaryText": "Lihat karya"
+  }
+}

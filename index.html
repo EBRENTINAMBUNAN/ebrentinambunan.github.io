@@ -4,252 +4,103 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ebren Tinambunan</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Typography & Icons -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
-  <body>
-    <main>
-      <section id="home" class="active">
-        <!-- FOTO PROFIL -->
-        <img
-          src="assets/img/myfoto.png"
-          alt="Foto Ebren Tinambunan"
-          class="profile-img"
-        />
+  <body data-page="home">
+    <!-- Ambient background shapes -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
 
-        <h2>Halo, Saya Ebren Tinambunan</h2>
+    <main class="shell">
+      <!-- HERO -->
+      <section class="hero">
 
-        <!-- typing animation -->
-        <p>
-          <span id="typing-text"></span>
-          <span id="cursor">|</span>
-        </p>
-
-        <!-- TOMBOL MUSIK -->
-        <button id="music-btn">🎵 Putar Musik</button>
-
-        <div style="margin-bottom: 2rem; margin-top: 4rem">
-          <hr />
-        </div>
-
-        <!-- SERTIFIKAT -->
-        <div id="certificates" class="certificates-home">
-          <h3 style="text-align: center">Sertifikat</h3>
-
-          <div class="certificate-grid">
-            <!-- Sertifikat 1 -->
-            <div class="certificate-card">
+        <div class="hero-grid">
+          <div class="hero-visual">
+            <div class="profile-frame">
               <img
-                src="assets/img/certificate1.png"
-                alt="Sertifikat 1"
-                class="certificate-img"
+                src="assets/img/my/ben.png"
+                alt="Foto Ebren Tinambunan"
+                class="profile-img"
               />
-              <p><strong>IMPHNEN</strong></p>
+              <span class="pulse-ring"></span>
+            </div>
+
+            <div class="mini-card">
+              <p id="mini-card">
+                Web Developer · Mahasiswa
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="projects">
-        <h2>Proyek</h2>
-
-        <div style="margin-bottom: 2rem">
-          <hr />
-        </div>
-
-        <div class="card-grid">
-          <!-- CARD 1 -->
-          <div class="card">
-            <img src="assets/img/project.png" alt="Website UMKM" />
-            <p>
-              <strong>Aplikasi Penjualan:</strong> berbasis website dengan
-              mobile UI-Friendly.
+          <div class="hero-copy">
+            <p class="eyebrow">Halo, saya</p>
+            <h1 id="hero-name">Ebren Tinambunan</h1>
+            <p class="lead">
+              <span id="typing-text"></span><span id="cursor">|</span>
             </p>
-            <a href="#">Lihat Demo</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="about">
-        <h2>Tentang Saya</h2>
-        <div style="margin-bottom: 2rem">
-          <hr />
-        </div>
-        <p>
-          Saya adalah seorang fullstack developer yang terbiasa membangun
-          aplikasi web menggunakan Laravel dan Tailwind CSS. Di sisi backend,
-          saya fokus pada Laravel, sementara frontend saya kembangkan dengan
-          pendekatan komponen yang efisien menggunakan Tailwind. Selain itu,
-          saya juga terbiasa mengelola server lewat cPanel dan menggunakan
-          Docker untuk menyiapkan environment yang lebih stabil. Saya terus
-          belajar lewat proyek-proyek nyata, dan percaya bahwa kemajuan datang
-          dari konsistensi, bukan kecepatan.
-        </p>
-
-        <br />
-        <h3>My Skills</h3>
-        <div class="skills-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Tech Stack</th>
-                <th>Level</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>PHP - Laravel - CodeIgniter</td>
-                <td>Advanced</td>
-              </tr>
-              <tr>
-                <td>CSS - Tailwind - Bootstrap</td>
-                <td>Intermediate</td>
-              </tr>
-              <tr>
-                <td>MySql - Sqlite - MongoDB</td>
-                <td>Intermediate</td>
-              </tr>
-              <tr>
-                <td>JavaScript - NodeJs - Express</td>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <td>Typescript</td>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <td>Java</td>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <td>C++</td>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <td>Python - Django</td>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <td>Golang - Fiber</td>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <td>Dart - Flutter</td>
-                <td>Beginner</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <br /><br />
-
-        <h3>My Tools</h3>
-        <div class="tools-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Tool</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Git - VsCode</td>
-              </tr>
-              <tr>
-                <td>Windows 11 - Linux(Xubuntu)</td>
-              </tr>
-              <tr>
-                <td>Cpanel - Docker</td>
-              </tr>
-              <tr>
-                <td>Postman - Cloudflare</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2>Kontak</h2>
-
-        <div style="margin-bottom: 2rem">
-          <!-- hyperlink berjalan -->
-          <div class="marquee-container">
-            <div class="marquee-text">
-              <a href="https://wa.me/6281234567890" target="_blank">
-                Klik di sini untuk menghubungi saya lewat WhatsApp sekarang
-                juga!
-              </a>
+            <p class="body" id="lead-text">
+              Saya membangun produk web end-to-end: dari arsitektur backend
+              berbasis Laravel hingga frontend yang ringan dan mobile-first.
+              Fokus pada keamanan, performa, dan pengalaman pengguna yang
+              polished.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="projects.html">Lihat Proyek</a>
+              <button id="music-btn" class="btn btn-ghost">🎵 Putar Musik</button>
+              <a class="btn btn-link" href="mailto:bendev403@gmail.com"
+                >Email cepat</a
+              >
             </div>
           </div>
         </div>
 
-        <span>Ikuti saya</span>
-
-        <!-- Ikon Instagram & GitHub (Font Awesome) -->
-        <div class="social-icons">
-          <a
-            href="https://instagram.com/ebren_tinambunan"
-            target="_blank"
-            aria-label="Instagram"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://github.com/ebrentinambunan"
-            target="_blank"
-            aria-label="GitHub"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-
-        <br />
-        <br />
-
-        <span>Atau Kirim saya Pesan</span>
-        <form
-          action="mailto:bendev403@gmail.com"
-          method="POST"
-          enctype="text/plain"
-        >
-          <div class="form-group">
-            <label for="name">Nama</label><br />
-            <input type="text" id="name" name="name" required />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label><br />
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Pesan</label><br />
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-
-          <button type="submit">Kirim</button>
-        </form>
       </section>
+
+      <div class="section-block">
+        <div class="section-heading">
+          <h3>Sertifikat</h3>
+          <span class="line"></span>
+        </div>
+        <div class="certificate-grid" id="certificates"></div>
+      </div>
     </main>
 
     <nav class="bottom-nav">
-      <button class="active" onclick="navigate('home', this)" title="Beranda">
+      <a href="index.html" data-page="home" title="Beranda" class="active">
         <span class="material-icons">home</span>
-      </button>
-      <button onclick="navigate('projects', this)" title="Proyek">
+      </a>
+      <a href="projects.html" data-page="projects" title="Proyek">
         <span class="material-icons">work</span>
-      </button>
-      <button onclick="navigate('about', this)" title="Tentang Saya">
+      </a>
+      <a href="about.html" data-page="about" title="Tentang Saya">
         <span class="material-icons">person</span>
-      </button>
-      <button onclick="navigate('contact', this)" title="Kontak">
+      </a>
+      <a href="contact.html" data-page="contact" title="Kontak">
         <span class="material-icons">mail</span>
-      </button>
+      </a>
     </nav>
 
     <!-- Modal Video -->
@@ -257,7 +108,6 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <div class="video-wrapper">
-          <!-- Default video (ganti src sesuai kebutuhan) -->
           <iframe
             id="modal-video"
             width="100%"
@@ -278,7 +128,7 @@
           id="modal-cert-img"
           src=""
           alt="Preview Sertifikat"
-          style="width: 100%; height: auto; border-radius: 8px"
+          style="width: 100%; height: auto; border-radius: 12px"
         />
       </div>
     </div>

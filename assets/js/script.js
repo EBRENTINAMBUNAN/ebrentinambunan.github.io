@@ -1,38 +1,404 @@
-/* ---------------------------
-          NAVIGASI SECTION
-    ----------------------------- */
-function navigate(id, btn) {
-  document.querySelectorAll("main section").forEach((section) => {
-    section.classList.remove("active");
-  });
-  document.getElementById(id).classList.add("active");
+const fallbackIndex = {
+  profile: {
+    name: "Ebren Tinambunan",
+    headline: "Fullstack Developer",
+    availability: "Siap Remote / Hybrid",
+    roleTag: "Fullstack Engineer",
+    lead: "Berjiwa indie, siap kolaborasi dengan tim kecil maupun perusahaan besar. Bersedia remote dan hybrid.",
+    typing: [
+      "Bersedia Remote dan Hybrid",
+      "Indie Web Developer",
+      "Siap Kerja Sama dengan Startup & UMKM",
+      "Siap Join Tim Corporate",
+      "Fokus pada UI/UX yang Nyaman",
+      "Clean Code & Maintainable",
+      "Mendukung Pengembangan Produk Digital",
+      "Terbiasa dengan Kolaborasi Tim & Tools Modern"
+    ],
+    miniCard: "Mahasiswa · Web Developer",
+    metrics: [
+      { label: "Proyek produksi", value: "20" },
+      { label: "On-time delivery", value: "96%" },
+      { label: "NPS internal", value: "9/10" },
+    ],
+  },
+  certificates: [
+    {
+      title: "AraTechnology",
+      desc: "Full Stack Web Development",
+      image: "assets/img/certificate/aratech.jpg",
+    },
+    {
+      title: "PKM",
+      desc: "Pengembangan sistem informasi profil sekolah berbasis laravel",
+      image: "assets/img/certificate/pkm.jpg",
+    },
+    {
+      title: "Workshop",
+      desc: "Workshop : Project Work",
+      image: "assets/img/certificate/ws1.jpg",
+    },
+  ],
+  strengths: [
+    {
+      icon: "🧭",
+      title: "Builder Mindset",
+      desc: "Mulai dari brief singkat, saya susun arsitektur, alur, dan prioritas yang bisa dieksekusi sprint demi sprint.",
+      bullets: ["Ship cepat dengan scope terukur", "Struktur modular + catatan 1-2 halaman", "Siap scale tanpa refactor besar"],
+    },
+    {
+      icon: "✨",
+      title: "UX-First Implementation",
+      desc: "Microcopy, ritme spacing, dan interaksi halus agar produk terasa premium namun ringan.",
+      bullets: ["Mobile-first, animasi seperlunya", "State jelas, error ramah pengguna", "Perf: cache, lazyload, preconnect"],
+    },
+    {
+      icon: "🛡️",
+      title: "Operational Calm",
+      desc: "Setelah rilis tetap tenang: guard input, logging ringkas, SOP rollback 2 menit.",
+      bullets: ["Checklist rilis dan rollback", "Hardening auth & form", "Handover + changelog untuk tim"],
+    },
+  ],
+  ctaBrand: {
+    eyebrow: "Personal brand",
+    heading: "Pengembang yang menggabungkan backend solid, UI elegan, dan delivery yang tenang.",
+    primaryText: "Ajak kolaborasi",
+    secondaryText: "Lihat karya",
+  },
+};
 
-  document.querySelectorAll("nav.bottom-nav button").forEach((button) => {
-    button.classList.remove("active");
+const fallbackProjects = {
+  projects: [
+    {
+      title: "Aplikasi Penjualan UMKM",
+      tag: "Web App · Responsive",
+      summary: "Dashboard penjualan real-time, manajemen produk, multi-role (pemilik/kasir), disetel agar tetap ringan di jaringan 3G.",
+      role: "Arsitektur backend, desain UI, implementasi frontend, deployment cPanel + Docker staging.",
+      impact: "+23% konversi checkout, -40% waktu muat halaman kasir",
+      image: "assets/img/project.png",
+      demo: "assets/mp4/project.mp4",
+      code: "https://github.com/ebrentinambunan",
+    },
+    {
+      title: "Finance Insight Dashboard",
+      tag: "Dashboard · API",
+      summary: "Monitor keuangan harian dengan pengamanan auth, grafik ringan, dan export cepat untuk tim akuntansi.",
+      role: "Desain data-flow, integrasi API, optimasi query, implementasi charting ringan.",
+      impact: "0,4% bug escape, laporan siap <3 detik",
+      image: "assets/img/project.png",
+      demo: "assets/mp4/project.mp4",
+      code: "https://github.com/ebrentinambunan",
+    },
+    {
+      title: "Landing + API Launchpad",
+      tag: "Landing · Backend",
+      summary: "Landing konversi tinggi dengan form early-access terhubung ke API email webhook.",
+      role: "Copy micro, UI animasi halus, endpoint pendaftaran + email webhook.",
+      impact: "CTR hero 7,8%, bounce turun 18%",
+      image: "assets/img/project.png",
+      demo: "assets/mp4/project.mp4",
+      code: "https://github.com/ebrentinambunan",
+    },
+  ],
+  projectStats: [
+    { label: "Page load", value: "~1.0s", desc: "Optimasi asset, lazyload, dan preconnect" },
+    { label: "Rollback", value: "< 2 menit", desc: "Staging + backup ringan sebelum rilis" },
+    { label: "Hand-off", value: "Playbook", desc: "Catatan singkat untuk tim operasional" },
+  ],
+  testimonial: {
+    quote: "Build cepat dengan UX yang rapi. Dokumentasinya singkat tapi cukup untuk tim langsung pegang.",
+    name: "Client Retail",
+  },
+};
+
+const fallbackAbout = {
+  timeline: [
+    {
+      year: "2025",
+      title: "Micro SaaS eksperimen",
+      desc: "Merilis MVP < 4 minggu: auth sederhana, billing percobaan, dan landing konversi tinggi.",
+    },
+    {
+      year: "2024",
+      title: "SaaS kecil untuk UMKM",
+      desc: "Bangun modul penjualan & laporan dengan fokus mobile-first dan deployment cPanel + Docker staging.",
+    },
+    {
+      year: "2023",
+      title: "Internal dashboard",
+      desc: "Integrasi API, hardening auth, dan optimasi query untuk laporan keuangan harian.",
+    },
+    {
+      year: "2022",
+      title: "Onboarding tooling",
+      desc: "Menyusun toolkit onboarding dev + dokumentasi singkat agar ramp-up lebih cepat.",
+    },
+  ],
+  values: [
+    { title: "Transparan", desc: "Progress rutin, demo build, changelog padat." },
+    { title: "Pragmatis", desc: "Pakai tool secukupnya; mudah di-maintain tim Anda." },
+    { title: "Ketahanan", desc: "Fokus ke performa, keamanan input, dan fallback." },
+    { title: "Empati", desc: "UI yang ramah pengguna dan dev handover yang ramah tim." },
+  ],
+  ctaBrand: {
+    eyebrow: "Personal brand",
+    heading: "Saya percaya produk terbaik lahir dari fondasi yang rapi, UI yang berkarakter, dan ritme rilis yang tenang.",
+    primaryText: "Ngobrol singkat",
+    secondaryText: "Lihat karya",
+  },
+};
+
+const fallbackContact = {
+  infoCards: [
+    { label: "Response time", value: "≤ 2 jam", desc: "Di jam kerja, lebih cepat via WhatsApp/Email." },
+    { label: "Zona waktu", value: "WIB (GMT+7)", desc: "Fleksibel untuk kolaborasi remote." },
+    { label: "Channel", value: "WA · Email · GMeet", desc: "Pilih media yang paling nyaman." },
+    { label: "Bahasa", value: "ID / EN", desc: "Bisa kolaborasi bilingual." },
+  ],
+  contactCTA: {
+    eyebrow: "Terbuka untuk kolaborasi",
+    heading: "Ceritakan konteksmu, saya balas dengan ide cepat dan langkah realistis.",
+    primaryText: "Email sekarang",
+    secondaryText: "Lihat proyek",
+  },
+};
+
+const state = { typingPhrases: [] };
+
+async function loadJson(path, fallback) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error("not ok");
+    return await res.json();
+  } catch (err) {
+    console.warn(`Gagal memuat ${path}, gunakan fallback`, err);
+    return fallback;
+  }
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el && value) el.textContent = value;
+}
+
+function renderMetrics(metrics) {
+  const wrap = document.getElementById("metrics");
+  if (!wrap || !metrics) return;
+  wrap.innerHTML = "";
+  metrics.forEach((m) => {
+    const div = document.createElement("div");
+    div.className = "metric";
+    div.innerHTML = `
+      <span class="metric-number">${m.value || "-"}</span>
+      <span class="metric-label">${m.label || ""}</span>
+    `;
+    wrap.appendChild(div);
   });
-  btn.classList.add("active");
+}
+
+function renderCertificates(list) {
+  const wrap = document.getElementById("certificates");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((c) => {
+    const card = document.createElement("div");
+    card.className = "certificate-card";
+    card.innerHTML = `
+      <img src="${c.image}" alt="${c.title}" class="certificate-img" />
+      <div class="certificate-meta">
+        <p class="title">${c.title}</p>
+        <p class="desc">${c.desc}</p>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+  initCertModal(); // re-bind
+}
+
+function renderStrengths(list) {
+  const wrap = document.getElementById("strengths");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((s) => {
+    const card = document.createElement("div");
+    card.className = "service-card";
+    const bullets = (s.bullets || [])
+      .map((b) => `<li>${b}</li>`)
+      .join("");
+    card.innerHTML = `
+      <div class="service-icon">${s.icon || "•"}</div>
+      <h4>${s.title}</h4>
+      <p>${s.desc}</p>
+      <ul>${bullets}</ul>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+function renderProjects(list) {
+  const wrap = document.getElementById("projects-grid");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "card project-card";
+    card.innerHTML = `
+      <div class="card-thumb">
+        <img src="${p.image}" alt="${p.title}" />
+      </div>
+      <div class="card-body">
+        <span class="card-chip">${p.tag}</span>
+        <h4>${p.title}</h4>
+        <p>${p.summary}</p>
+        <p class="muted">${p.role || ""}</p>
+        <div class="card-actions">
+          <a href="#" class="btn btn-secondary demo-btn" data-video="${p.demo}">Lihat Demo</a>
+          <a href="${p.code}" target="_blank" rel="noopener" class="btn btn-ghost">Lihat Kode</a>
+        </div>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+  initVideoModal(); // bind after render
+}
+
+function renderStats(list) {
+  const wrap = document.getElementById("project-stats");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((s) => {
+    const card = document.createElement("div");
+    card.className = "stat-card";
+    card.innerHTML = `
+      <p class="stat-label">${s.label}</p>
+      <p class="stat-value">${s.value}</p>
+      <p class="stat-desc">${s.desc}</p>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+function renderTestimonial(t) {
+  if (!t) return;
+  setText("testimonial-quote", t.quote);
+  setText("testimonial-name", t.name);
+}
+
+function renderTimeline(list) {
+  const wrap = document.getElementById("timeline");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((item) => {
+    const row = document.createElement("div");
+    row.className = "timeline-item";
+    row.innerHTML = `
+      <span class="timeline-dot"></span>
+      <div>
+        <p class="timeline-title">${item.year} · ${item.title}</p>
+        <p class="muted">${item.desc}</p>
+      </div>
+    `;
+    wrap.appendChild(row);
+  });
+}
+
+function renderValues(list) {
+  const wrap = document.getElementById("values-grid");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((v) => {
+    const card = document.createElement("div");
+    card.className = "value-card";
+    card.innerHTML = `<h4>${v.title}</h4><p class="muted">${v.desc}</p>`;
+    wrap.appendChild(card);
+  });
+}
+
+function renderInfoCards(list) {
+  const wrap = document.getElementById("info-grid");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  list.forEach((i) => {
+    const card = document.createElement("div");
+    card.className = "info-card";
+    card.innerHTML = `
+      <p class="stat-label">${i.label}</p>
+      <p class="stat-value">${i.value}</p>
+      <p class="muted">${i.desc}</p>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+function renderCTA(prefix, data, defaults) {
+  if (!data) data = {};
+  setText(`${prefix}-eyebrow`, data.eyebrow || defaults.eyebrow);
+  setText(`${prefix}-heading`, data.heading || defaults.heading);
+  setText(`${prefix}-primary`, data.primaryText || defaults.primaryText);
+  setText(`${prefix}-secondary`, data.secondaryText || defaults.secondaryText);
+}
+
+function hydrateHome(data) {
+  const profile = data.profile || {};
+  setText("badge-availability", profile.availability);
+  setText("badge-role", profile.roleTag);
+  setText("hero-name", profile.name);
+  setText("lead-text", profile.lead);
+  setText("mini-card", profile.miniCard);
+  renderMetrics(profile.metrics);
+  renderCertificates(data.certificates);
+  renderStrengths(data.strengths);
+  renderCTA("brand", data.ctaBrand, {
+    eyebrow: "Personal brand",
+    heading: "Pengembang yang menyatukan backend rapi, UI elegan, dan delivery tenang.",
+    primaryText: "Ajak berkolaborasi",
+    secondaryText: "Lihat karya",
+  });
+  startTyping(profile.typing);
+}
+
+function hydrateProjects(data) {
+  renderProjects(data.projects);
+  renderStats(data.projectStats);
+  renderTestimonial(data.testimonial);
+}
+
+function hydrateAbout(data) {
+  renderTimeline(data.timeline);
+  renderValues(data.values);
+  renderCTA("about", data.ctaBrand, {
+    eyebrow: "Personal brand",
+    heading:
+      "Saya percaya produk terbaik lahir dari fondasi yang rapi, UI yang berkarakter, dan ritme rilis yang tenang.",
+    primaryText: "Ngobrol singkat",
+    secondaryText: "Lihat karya",
+  });
+}
+
+function hydrateContact(data) {
+  renderInfoCards(data.infoCards);
+  renderCTA("contact", data.contactCTA, {
+    eyebrow: "Terbuka untuk kolaborasi",
+    heading: "Ceritakan konteksmu, saya balas dengan ide cepat dan langkah realistis.",
+    primaryText: "Email sekarang",
+    secondaryText: "Lihat proyek",
+  });
 }
 
 /* ---------------------------
-          TYPING EFFECT JS
-    ----------------------------- */
-const typingElement = document.getElementById("typing-text");
-const cursor = document.getElementById("cursor");
-
-const phrases = [
-  "Saya Seorang Mahasiswa Teknik Informatika...",
-  "dan juga Seorang FullStack Developer.",
-];
-
+          TYPING EFFECT
+----------------------------- */
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 let delay = 500;
+let typingElement;
+let cursor;
 
 function type() {
-  const currentPhrase = phrases[phraseIndex];
+  if (!typingElement || !cursor || !state.typingPhrases.length) return;
+  const currentPhrase = state.typingPhrases[phraseIndex] || "";
   const currentText = currentPhrase.substring(0, charIndex);
-
   typingElement.textContent = currentText;
 
   if (!isDeleting) {
@@ -42,103 +408,156 @@ function type() {
       isDeleting = true;
       delay = 1200;
     }
+  } else if (charIndex > 0) {
+    charIndex--;
   } else {
-    if (charIndex > 0) {
-      charIndex--;
-    } else {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      delay = 300;
-    }
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % state.typingPhrases.length;
+    delay = 300;
   }
 
   setTimeout(type, isDeleting ? 50 : delay);
 }
 
 function blinkCursor() {
+  if (!cursor) return;
   cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
 }
 
-type();
-setInterval(blinkCursor, 500);
+function startTyping(phrases) {
+  if (phrases && phrases.length) state.typingPhrases = phrases;
+  typingElement = document.getElementById("typing-text");
+  cursor = document.getElementById("cursor");
+  if (typingElement && cursor && state.typingPhrases.length) {
+    type();
+    setInterval(blinkCursor, 500);
+  }
+}
 
 /* ============================
       MUSIC PLAYER BUTTON
 ============================= */
-
-const music = document.getElementById("bg-music");
-const musicBtn = document.getElementById("music-btn");
-let isPlaying = false;
-
-musicBtn.addEventListener("click", () => {
-  if (!isPlaying) {
-    music.play();
-    isPlaying = true;
-    musicBtn.textContent = "⏸️ Hentikan Musik";
-  } else {
-    music.pause();
-    isPlaying = false;
-    musicBtn.textContent = "🎵 Putar Musik";
+function initMusic() {
+  const music = document.getElementById("bg-music");
+  const musicBtn = document.getElementById("music-btn");
+  let isPlaying = false;
+  if (music && musicBtn) {
+    musicBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        music.play();
+        isPlaying = true;
+        musicBtn.textContent = "⏸️ Hentikan Musik";
+      } else {
+        music.pause();
+        isPlaying = false;
+        musicBtn.textContent = "🎵 Putar Musik";
+      }
+    });
   }
-});
+}
 
 /* ===========================
    VIDEO MODAL HANDLER
 =========================== */
-const modal = document.getElementById("videoModal");
-const modalVideo = document.getElementById("modal-video");
-const closeBtn = document.querySelector(".modal .close");
+function initVideoModal() {
+  const modal = document.getElementById("videoModal");
+  const modalVideo = document.getElementById("modal-video");
+  const closeBtn = document.querySelector(".modal .close");
+  if (!(modal && modalVideo && closeBtn)) return;
 
-// Open modal with video
-document.querySelectorAll(".card a").forEach((btn, index) => {
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
-    const videoURLs = [
-      "assets/mp4/project.mp4", 
-    ];
-    modalVideo.src = videoURLs[index];
-    modal.style.display = "block";
+  document.querySelectorAll(".demo-btn").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      const videoURL = btn.dataset.video;
+      if (!videoURL) return;
+      modalVideo.src = videoURL;
+      modal.style.display = "block";
+    });
   });
-});
 
-// Close modal
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-  modalVideo.src = "";
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target == modal) {
+  closeBtn.onclick = () => {
     modal.style.display = "none";
     modalVideo.src = "";
-  }
-});
+  };
+  window.onclick = (e) => {
+    if (e.target == modal) {
+      modal.style.display = "none";
+      modalVideo.src = "";
+    }
+  };
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+      modalVideo.src = "";
+    }
+  });
+}
 
 /* ===========================
    MODAL GAMBAR SERTIFIKAT
 =========================== */
-const certModal = document.getElementById("certificateModal");
-const certImg = document.getElementById("modal-cert-img");
-const certCloseBtn = document.querySelector(".close-cert");
+function initCertModal() {
+  const certModal = document.getElementById("certificateModal");
+  const certImg = document.getElementById("modal-cert-img");
+  const certCloseBtn = document.querySelector(".close-cert");
+  if (!(certModal && certImg && certCloseBtn)) return;
 
-// Tambahkan event ke semua gambar sertifikat
-document.querySelectorAll(".certificate-img").forEach((img) => {
-  img.addEventListener("click", () => {
-    certImg.src = img.src;
-    certModal.style.display = "block";
+  document.querySelectorAll(".certificate-img").forEach((img) => {
+    img.addEventListener("click", () => {
+      certImg.src = img.src;
+      certModal.style.display = "block";
+    });
   });
-});
 
-// Tombol close
-certCloseBtn.addEventListener("click", () => {
-  certModal.style.display = "none";
-  certImg.src = "";
-});
-
-// Klik luar area modal untuk tutup
-window.addEventListener("click", (e) => {
-  if (e.target === certModal) {
+  certCloseBtn.onclick = () => {
     certModal.style.display = "none";
     certImg.src = "";
+  };
+  window.addEventListener("click", (e) => {
+    if (e.target === certModal) {
+      certModal.style.display = "none";
+      certImg.src = "";
+    }
+  });
+}
+
+/* ---------------------------
+   NAV ACTIVE STATE (MPA)
+----------------------------- */
+function setNavActive() {
+  const currentPage = document.body.dataset.page;
+  const navLinks = document.querySelectorAll("nav.bottom-nav a[data-page]");
+  if (currentPage && navLinks.length) {
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.dataset.page === currentPage);
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  setNavActive();
+  initMusic();
+
+  const page = document.body.dataset.page;
+
+  if (page === "home") {
+    const data = await loadJson("assets/data/index.json", fallbackIndex);
+    state.typingPhrases = data.profile?.typing || fallbackIndex.profile.typing;
+    hydrateHome(data);
+  }
+
+  if (page === "projects") {
+    const data = await loadJson("assets/data/projects.json", fallbackProjects);
+    hydrateProjects(data);
+  }
+
+  if (page === "about") {
+    const data = await loadJson("assets/data/about.json", fallbackAbout);
+    hydrateAbout(data);
+  }
+
+  if (page === "contact") {
+    const data = await loadJson("assets/data/contact.json", fallbackContact);
+    hydrateContact(data);
   }
 });
