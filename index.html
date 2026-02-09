@@ -1,60 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Ebren Tinambunan</title>
-
     <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
       rel="stylesheet"
     />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
   </head>
-
   <body data-page="home">
     <!-- Ambient background shapes -->
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
     <div class="bg-grid"></div>
-
     <main class="shell">
       <!-- HERO -->
       <section class="hero">
-
         <div class="hero-grid">
           <div class="hero-visual">
             <div class="profile-frame">
               <img
-                src="assets/img/my/ben.png"
                 alt="Foto Ebren Tinambunan"
                 class="profile-img"
+                src="assets/img/my/ben.png"
               />
               <span class="pulse-ring"></span>
             </div>
-
             <div class="mini-card">
-              <p id="mini-card">
-                Web Developer · Mahasiswa
-              </p>
+              <p id="mini-card">Web Developer · Mahasiswa</p>
             </div>
           </div>
-
           <div class="hero-copy">
             <p class="eyebrow">Halo, saya</p>
             <h1 id="hero-name">Ebren Tinambunan</h1>
@@ -68,17 +53,19 @@
               polished.
             </p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="projects.html">Lihat Proyek</a>
-              <button id="music-btn" class="btn btn-ghost">🎵 Putar Musik</button>
+              <a class="btn btn-primary" data-page="projects" href="index.html"
+                >Lihat Proyek</a
+              >
+              <button class="btn btn-ghost" id="music-btn">
+                🎵 Putar Musik
+              </button>
               <a class="btn btn-link" href="mailto:bendev403@gmail.com"
                 >Email cepat</a
               >
             </div>
           </div>
         </div>
-
       </section>
-
       <div class="section-block">
         <div class="section-heading">
           <h3>Sertifikat</h3>
@@ -87,59 +74,256 @@
         <div class="certificate-grid" id="certificates"></div>
       </div>
     </main>
-
+    <!-- SPA Templates -->
+    <template id="tpl-projects">
+      <div class="section-heading" style="margin-bottom: 1.5rem">
+        <h2>Proyek Pilihan</h2>
+        <span class="line"></span>
+      </div>
+      <p class="muted" style="margin-bottom: 1.2rem">
+        Beberapa rilis yang saya bangun end-to-end—fokus pada UX halus, fondasi
+        backend rapi, dan rollout tanpa drama.
+      </p>
+      <div class="card-grid" id="projects-grid"></div>
+      <div class="stats-grid" id="project-stats"></div>
+      <div class="quote-card" id="testimonial-card">
+        <p class="quote-mark">“</p>
+        <p id="testimonial-quote">
+          Dashboard ringan, tim kasir langsung paham tanpa training panjang.
+          Rilis cepat tapi tetap stabil.
+        </p>
+        <span class="quote-name" id="testimonial-name">Client UMKM</span>
+      </div>
+      <div style="margin-top: 1.8rem">
+        <a class="btn btn-primary" data-page="contact" href="index.html"
+          >Butuh proyek serupa?</a
+        >
+      </div>
+    </template>
+    <template id="tpl-about">
+      <div class="section-heading" style="margin-bottom: 1.4rem">
+        <h2>Tentang Saya</h2>
+        <span class="line"></span>
+      </div>
+      <p class="muted" style="margin-bottom: 1rem">
+        Builder yang fokus ke kualitas—menggabungkan backend yang rapi dengan
+        frontend yang terasa mewah.
+      </p>
+      <div class="about-grid">
+        <div class="glass-card">
+          <h3>Cara kerja</h3>
+          <p>
+            Saya mengutamakan DX (developer experience) untuk menjaga ritme
+            delivery: struktur modul, dokumentasi API singkat, dan pipeline
+            sederhana di server atau Docker. Frontend saya buat komponen-first
+            sehingga mudah di-scale.
+          </p>
+          <p>
+            Delivery cepat tanpa mengorbankan maintainability—memanfaatkan
+            caching, keamanan input, serta monitoring dasar agar produk siap
+            produksi.
+          </p>
+        </div>
+        <div class="glass-card">
+          <h3>Stack utama</h3>
+          <div class="chip-grid">
+            <span class="chip">PHP · Laravel · CI</span>
+            <span class="chip">Tailwind CSS</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">MySQL · SQLite · MongoDB</span>
+            <span class="chip">JavaScript · Node.js</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Cloudflare</span>
+            <span class="chip">cPanel</span>
+            <span class="chip">Git · VSCode</span>
+          </div>
+        </div>
+      </div>
+      <div class="tools-grid" style="margin-top: 0.5rem">
+        <div class="tool-card">
+          <h4>Bahasa &amp; Framework</h4>
+          <p>PHP, JavaScript/TypeScript, Python, Go, Dart, Java, C++</p>
+        </div>
+        <div class="tool-card">
+          <h4>DevOps</h4>
+          <p>Docker, cPanel deployment, basic CI/CD, Cloudflare</p>
+        </div>
+        <div class="tool-card">
+          <h4>Workflow</h4>
+          <p>Git, GitHub, Postman, dokumentasi API, unit testing dasar</p>
+        </div>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <div class="values-grid" id="values-grid"></div>
+      <div style="margin-top: 1.4rem">
+        <a class="btn btn-primary" data-page="projects" href="index.html"
+          >Lihat Proyek</a
+        >
+        <a class="btn btn-ghost" data-page="contact" href="index.html"
+          >Ayo ngobrol</a
+        >
+      </div>
+      <div class="accent-band">
+        <div>
+          <p class="eyebrow" id="about-eyebrow">Personal brand</p>
+          <h3 id="about-heading">
+            Saya percaya produk terbaik lahir dari fondasi yang rapi, UI yang
+            berkarakter, dan ritme rilis yang tenang.
+          </h3>
+        </div>
+        <div class="band-actions">
+          <a
+            class="btn btn-secondary"
+            data-page="projects"
+            href="index.html"
+            id="about-secondary"
+            >Lihat karya</a
+          >
+          <a
+            class="btn btn-primary"
+            data-page="contact"
+            href="index.html"
+            id="about-primary"
+            >Ngobrol singkat</a
+          >
+        </div>
+      </div>
+    </template>
+    <template id="tpl-contact">
+      <div class="section-heading" style="margin-bottom: 1.2rem">
+        <h2>Kontak</h2>
+        <span class="line"></span>
+      </div>
+      <p class="muted" style="margin-bottom: 1rem">
+        Kolaborasi, konsultasi, atau sekadar berdiskusi ide baru.
+      </p>
+      <div class="info-grid" id="info-grid"></div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="marquee-container">
+            <div class="marquee-text">
+              <a href="https://wa.me/6281234567890" target="_blank">
+                Klik di sini untuk menghubungi saya lewat WhatsApp sekarang!
+              </a>
+            </div>
+          </div>
+          <p class="muted" style="margin-top: 1rem">Ikuti saya</p>
+          <div class="social-icons">
+            <a
+              aria-label="Instagram"
+              href="https://instagram.com/ebren_tinambunan"
+              target="_blank"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              aria-label="GitHub"
+              href="https://github.com/ebrentinambunan"
+              target="_blank"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+        <form
+          action="mailto:bendev403@gmail.com"
+          enctype="text/plain"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input id="name" name="name" required="" type="text" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" required="" type="email" />
+          </div>
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea
+              id="message"
+              name="message"
+              required=""
+              rows="5"
+            ></textarea>
+          </div>
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+      <div class="accent-band">
+        <div>
+          <p class="eyebrow" id="contact-eyebrow">Terbuka untuk kolaborasi</p>
+          <h3 id="contact-heading">
+            Ceritakan konteksmu, saya balas dengan ide cepat dan langkah
+            realistis.
+          </h3>
+        </div>
+        <div class="band-actions">
+          <a
+            class="btn btn-secondary"
+            data-page="projects"
+            href="index.html"
+            id="contact-secondary"
+            >Lihat proyek</a
+          >
+          <a
+            class="btn btn-primary"
+            href="mailto:bendev403@gmail.com"
+            id="contact-primary"
+            >Email sekarang</a
+          >
+        </div>
+      </div>
+    </template>
     <nav class="bottom-nav">
-      <a href="index.html" data-page="home" title="Beranda" class="active">
+      <a class="active" data-page="home" href="index.html" title="Beranda">
         <span class="material-icons">home</span>
       </a>
-      <a href="projects.html" data-page="projects" title="Proyek">
+      <a data-page="projects" href="index.html" title="Proyek">
         <span class="material-icons">work</span>
       </a>
-      <a href="about.html" data-page="about" title="Tentang Saya">
+      <a data-page="about" href="index.html" title="Tentang Saya">
         <span class="material-icons">person</span>
       </a>
-      <a href="contact.html" data-page="contact" title="Kontak">
+      <a data-page="contact" href="index.html" title="Kontak">
         <span class="material-icons">mail</span>
       </a>
     </nav>
-
     <!-- Modal Video -->
-    <div id="videoModal" class="modal">
+    <div class="modal" id="videoModal">
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close">×</span>
         <div class="video-wrapper">
           <iframe
-            id="modal-video"
-            width="100%"
-            height="315"
-            src=""
+            allowfullscreen=""
             frameborder="0"
-            allowfullscreen
+            height="315"
+            id="modal-video"
+            src=""
+            width="100%"
           ></iframe>
         </div>
       </div>
     </div>
-
     <!-- Modal Sertifikat -->
-    <div id="certificateModal" class="modal">
+    <div class="modal" id="certificateModal">
       <div class="modal-content">
-        <span class="close-cert">&times;</span>
+        <span class="close-cert">×</span>
         <img
+          alt="Preview Sertifikat"
           id="modal-cert-img"
           src=""
-          alt="Preview Sertifikat"
           style="width: 100%; height: auto; border-radius: 12px"
         />
       </div>
     </div>
-
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop="">
       <source src="assets/mp3/home.mp3" type="audio/mpeg" />
     </audio>
-
     <script
-      src="https://kit.fontawesome.com/3f8ab955ad.js"
       crossorigin="anonymous"
+      src="https://kit.fontawesome.com/3f8ab955ad.js"
     ></script>
     <script src="assets/js/script.js"></script>
   </body>

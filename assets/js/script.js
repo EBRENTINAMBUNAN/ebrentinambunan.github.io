@@ -164,6 +164,16 @@ const fallbackContact = {
 };
 
 const state = { typingPhrases: [] };
+const pageCache = new Map(); // { page: { html, title, page } }
+const pageTitles = {
+  home: "Ebren Tinambunan",
+  projects: "Proyek · Ebren Tinambunan",
+  about: "Tentang · Ebren Tinambunan",
+  contact: "Kontak · Ebren Tinambunan",
+};
+const pageOrder = ["home", "projects", "about", "contact"];
+let currentPage = null;
+let isNavigating = false;
 
 async function loadJson(path, fallback) {
   try {
@@ -394,6 +404,8 @@ let isDeleting = false;
 let delay = 500;
 let typingElement;
 let cursor;
+let typingTimer = null;
+let blinkTimer = null;
 
 function type() {
   if (!typingElement || !cursor || !state.typingPhrases.length) return;
@@ -416,7 +428,7 @@ function type() {
     delay = 300;
   }
 
-  setTimeout(type, isDeleting ? 50 : delay);
+  typingTimer = setTimeout(type, isDeleting ? 50 : delay);
 }
 
 function blinkCursor() {
@@ -424,13 +436,24 @@ function blinkCursor() {
   cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
 }
 
+function resetTyping() {
+  if (typingTimer) clearTimeout(typingTimer);
+  if (blinkTimer) clearInterval(blinkTimer);
+  typingTimer = null;
+  blinkTimer = null;
+  phraseIndex = 0;
+  charIndex = 0;
+  isDeleting = false;
+}
+
 function startTyping(phrases) {
   if (phrases && phrases.length) state.typingPhrases = phrases;
+  resetTyping();
   typingElement = document.getElementById("typing-text");
   cursor = document.getElementById("cursor");
   if (typingElement && cursor && state.typingPhrases.length) {
     type();
-    setInterval(blinkCursor, 500);
+    blinkTimer = setInterval(blinkCursor, 500);
   }
 }
 
@@ -441,6 +464,9 @@ function initMusic() {
   const music = document.getElementById("bg-music");
   const musicBtn = document.getElementById("music-btn");
   let isPlaying = false;
+  if (!(music && musicBtn)) return;
+  if (musicBtn.dataset.bound === "true") return;
+  musicBtn.dataset.bound = "true";
   if (music && musicBtn) {
     musicBtn.addEventListener("click", () => {
       if (!isPlaying) {
@@ -534,30 +560,238 @@ function setNavActive() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-  setNavActive();
-  initMusic();
+function getPageFromHref(href) {
+  if (!href) return null;
+  if (href.startsWith("mailto:") || href.startsWith("tel:")) return null;
+  try {
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin) return null;
+    const file = (url.pathname.split("/").pop() || "").toLowerCase();
+    if (file.startsWith("projects")) return "projects";
+    if (file.startsWith("about")) return "about";
+    if (file.startsWith("contact")) return "contact";
+    if (file === "" || file === "index.html") return "home";
+  } catch (e) {
+    return null;
+  }
+  return null;
+}
 
-  const page = document.body.dataset.page;
+function toggleLoader(active) {
+  const loader = document.getElementById("page-loader");
+  if (!loader) return;
+  if (active) loader.classList.add("active"); else loader.classList.remove("active");
+}
 
+function ensureSharedElements() {
+  if (!document.getElementById("videoModal")) {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      <div id="videoModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="video-wrapper">
+            <iframe id="modal-video" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(wrapper.firstElementChild);
+  }
+
+  if (!document.getElementById("certificateModal")) {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      <div id="certificateModal" class="modal">
+        <div class="modal-content">
+          <span class="close-cert">&times;</span>
+          <img
+            id="modal-cert-img"
+            src=""
+            alt="Preview Sertifikat"
+            style="width: 100%; height: auto; border-radius: 12px"
+          />
+        </div>
+      </div>
+    `;
+    document.body.appendChild(wrapper.firstElementChild);
+  }
+
+  if (!document.getElementById("bg-music")) {
+    const audio = document.createElement("audio");
+    audio.id = "bg-music";
+    audio.loop = true;
+    audio.innerHTML = `<source src="assets/mp3/home.mp3" type="audio/mpeg" />`;
+    document.body.appendChild(audio);
+  }
+
+  if (!document.getElementById("page-loader")) {
+    const loader = document.createElement("div");
+    loader.id = "page-loader";
+    loader.innerHTML = `
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <p>Memuat...</p>
+      </div>
+    `;
+    document.body.appendChild(loader);
+  }
+}
+
+function getTemplateHTML(page) {
+  const tpl = page === "home" ? null : document.getElementById(`tpl-${page}`);
+  if (tpl) return tpl.innerHTML;
+  if (pageCache.has("home")) return pageCache.get("home").html;
+  return null;
+}
+
+async function hydrateForPage(page) {
+  resetTyping();
   if (page === "home") {
     const data = await loadJson("assets/data/index.json", fallbackIndex);
     state.typingPhrases = data.profile?.typing || fallbackIndex.profile.typing;
     hydrateHome(data);
+    initMusic();
+    return;
   }
 
   if (page === "projects") {
     const data = await loadJson("assets/data/projects.json", fallbackProjects);
     hydrateProjects(data);
+    return;
   }
 
   if (page === "about") {
     const data = await loadJson("assets/data/about.json", fallbackAbout);
     hydrateAbout(data);
+    return;
   }
 
   if (page === "contact") {
     const data = await loadJson("assets/data/contact.json", fallbackContact);
     hydrateContact(data);
+  }
+}
+
+async function applyPage(page, { push = true } = {}) {
+  const main = document.querySelector("main");
+  let html = "";
+  if (page === "home") {
+    html = pageCache.get("home")?.html || (main ? main.innerHTML : "");
+  } else {
+    html = getTemplateHTML(page);
+  }
+
+  if (!html) return;
+  if (main) {
+    main.dataset.state = "out";
+    await new Promise((r) => setTimeout(r, 140));
+    main.innerHTML = html;
+    main.dataset.state = "in";
+  }
+
+  document.body.dataset.page = page;
+  document.title = pageTitles[page] || pageTitles.home;
+  setNavActive();
+  await hydrateForPage(page);
+
+  if (push) {
+    history.pushState({ page }, document.title, window.location.pathname);
+  }
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+async function navigateTo(page, options = {}) {
+  const target = page || "home";
+  if (target === currentPage && !options.force) return;
+  if (isNavigating) return;
+  isNavigating = true;
+  toggleLoader(true);
+  await applyPage(target, { push: options.push !== false });
+  currentPage = target;
+  toggleLoader(false);
+  isNavigating = false;
+}
+
+function handleLinkClick(e) {
+  const anchor = e.target.closest("a");
+  if (!anchor) return;
+  if (anchor.target === "_blank") return;
+  const page = anchor.dataset.page || getPageFromHref(anchor.getAttribute("href"));
+  if (!page) return;
+  e.preventDefault();
+  navigateTo(page);
+}
+
+function onPopState(e) {
+  const page = e.state?.page || "home";
+  navigateTo(page, { push: false, force: true });
+}
+
+function nextPage(current, direction) {
+  const idx = pageOrder.indexOf(current);
+  if (idx === -1) return current;
+  const nextIdx = (idx + direction + pageOrder.length) % pageOrder.length;
+  return pageOrder[nextIdx];
+}
+
+function bindSwipeNavigation() {
+  const main = document.querySelector("main");
+  if (!main) return;
+  let startX = 0;
+  let startY = 0;
+  let tracking = false;
+
+  main.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    tracking = true;
+  });
+
+  main.addEventListener("touchmove", (e) => {
+    if (!tracking) return;
+    if (Math.abs(e.touches[0].clientY - startY) > 80) {
+      tracking = false; // vertical scroll, cancel swipe
+    }
+  });
+
+  main.addEventListener("touchend", (e) => {
+    if (!tracking) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    tracking = false;
+    const threshold = 60;
+    if (Math.abs(dx) < threshold) return;
+    const direction = dx < 0 ? 1 : -1; // swipe left -> next
+    const target = nextPage(currentPage || "home", direction);
+    navigateTo(target);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  ensureSharedElements();
+  const main = document.querySelector("main");
+  pageCache.set("home", {
+    html: main ? main.innerHTML : "",
+    title: document.title,
+    page: "home",
+  });
+  const initialStatePage = history.state?.page;
+  currentPage =
+    initialStatePage && ["home", "projects", "about", "contact"].includes(initialStatePage)
+      ? initialStatePage
+      : "home";
+  if (!history.state || !history.state.page) {
+    history.replaceState({ page: currentPage }, document.title, window.location.pathname);
+  }
+  setNavActive();
+  await hydrateForPage(currentPage);
+  document.addEventListener("click", handleLinkClick);
+  window.addEventListener("popstate", onPopState);
+  bindSwipeNavigation();
+  if (currentPage !== "home") {
+    navigateTo(currentPage, { push: false, force: true });
   }
 });
