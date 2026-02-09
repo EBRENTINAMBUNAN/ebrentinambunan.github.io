@@ -707,10 +707,15 @@ async function navigateTo(page, options = {}) {
   if (isNavigating) return;
   isNavigating = true;
   toggleLoader(true);
-  await applyPage(target, { push: options.push !== false });
-  currentPage = target;
-  toggleLoader(false);
-  isNavigating = false;
+  try {
+    await applyPage(target, { push: options.push !== false });
+    currentPage = target;
+  } catch (err) {
+    console.error(err);
+  } finally {
+    toggleLoader(false);
+    isNavigating = false;
+  }
 }
 
 function handleLinkClick(e) {
@@ -788,6 +793,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   setNavActive();
   await hydrateForPage(currentPage);
+  if (main) main.dataset.state = "in";
   document.addEventListener("click", handleLinkClick);
   window.addEventListener("popstate", onPopState);
   bindSwipeNavigation();
