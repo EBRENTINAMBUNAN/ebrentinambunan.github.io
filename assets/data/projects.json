@@ -2,7 +2,7 @@
   "projects": [
     {
       "title": "Aplikasi Penjualan UMKM",
-      "tag": "Web App · Responsive",
+      "tag": "Private",
       "summary": "Dashboard penjualan real-time, manajemen produk, multi-role (pemilik/kasir), disetel agar tetap ringan di jaringan 3G.",
       "role": "Arsitektur backend, desain UI, implementasi frontend, deployment cPanel + Docker staging.",
       "impact": "+23% konversi checkout, -40% waktu muat halaman kasir",
@@ -12,7 +12,7 @@
     },
     {
       "title": "Finance Insight Dashboard",
-      "tag": "Dashboard · API",
+      "tag": "Private",
       "summary": "Monitor keuangan harian dengan pengamanan auth, grafik ringan, dan export cepat untuk tim akuntansi.",
       "role": "Desain data-flow, integrasi API, optimasi query, implementasi charting ringan.",
       "impact": "0,4% bug escape, laporan siap <3 detik",
@@ -22,7 +22,7 @@
     },
     {
       "title": "Landing + API Launchpad",
-      "tag": "Landing · Backend",
+      "tag": "Public",
       "summary": "Landing konversi tinggi dengan form early-access terhubung ke API email webhook.",
       "role": "Copy micro, UI animasi halus, endpoint pendaftaran + email webhook.",
       "impact": "CTR hero 7,8%, bounce turun 18%",

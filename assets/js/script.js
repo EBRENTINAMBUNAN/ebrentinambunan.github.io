@@ -1,4 +1,4 @@
-const state = { typingPhrases: [] };
+const state = { typingPhrases: [], projects: [], projectFilter: "all" };
 const pageCache = new Map(); // { page: { html, title, page } }
 const pageTitles = {
   home: "Ebren Tinambunan",
@@ -87,24 +87,31 @@ function renderProjects(list) {
   list.forEach((p) => {
     const card = document.createElement("div");
     card.className = "card project-card";
+    const docLink = p.code || p.demo || "";
+    const status = (p.tag || "").trim().toLowerCase();
+    const chipClass =
+      status === "public" ? "chip-public" : status === "private" ? "chip-private" : "";
+    const showDoc = status === "public" && docLink;
     card.innerHTML = `
       <div class="card-thumb">
         <img src="${p.image}" alt="${p.title}" />
       </div>
       <div class="card-body">
-        <span class="card-chip">${p.tag}</span>
-        <h4>${p.title}</h4>
-        <p>${p.summary}</p>
-        <p class="muted">${p.role || ""}</p>
-        <div class="card-actions">
-          <a href="#" class="btn btn-secondary demo-btn" data-video="${p.demo}">Lihat Demo</a>
-          <a href="${p.code}" target="_blank" rel="noopener" class="btn btn-ghost">Lihat Kode</a>
+        <div class="card-head">
+          <h4>${p.title}</h4>
+          <span class="card-chip ${chipClass}">${p.tag || ""}</span>
         </div>
+        ${
+          showDoc
+            ? `<div class="card-actions">
+                 <a href="${docLink}" target="_blank" rel="noopener" class="btn btn-primary">Lihat Dokumentasi</a>
+               </div>`
+            : ""
+        }
       </div>
     `;
     wrap.appendChild(card);
   });
-  initVideoModal(); // bind after render
 }
 
 function renderStats(list) {
@@ -112,15 +119,48 @@ function renderStats(list) {
   if (!wrap || !list) return;
   wrap.innerHTML = "";
   list.forEach((s) => {
-    const card = document.createElement("div");
-    card.className = "stat-card";
+    const card = document.createElement("button");
+    card.type = "button";
+    const filterClass = s.filter ? `filter-${s.filter}` : "";
+    card.className = `stat-card ${filterClass}`;
+    if (s.filter) card.dataset.filter = s.filter;
     card.innerHTML = `
-      <p class="stat-label">${s.label}</p>
+      <div class="stat-top">
+        <span class="stat-dot ${filterClass}"></span>
+        <p class="stat-label">${s.label}</p>
+      </div>
       <p class="stat-value">${s.value}</p>
-      <p class="stat-desc">${s.desc}</p>
+      <p class="stat-desc">${s.desc || ""}</p>
     `;
     wrap.appendChild(card);
   });
+}
+
+function bindProjectFilters() {
+  const cards = document.querySelectorAll(".stat-card[data-filter]");
+  if (!cards.length) return;
+  const setActive = (filter) => {
+    cards.forEach((c) => c.classList.toggle("active", c.dataset.filter === filter));
+  };
+  const applyFilter = (filter) => {
+    state.projectFilter = filter;
+    setActive(filter);
+    let filtered = state.projects;
+    if (filter === "public") {
+      filtered = state.projects.filter(
+        (p) => (p.tag || "").trim().toLowerCase() === "public"
+      );
+    } else if (filter === "private") {
+      filtered = state.projects.filter(
+        (p) => (p.tag || "").trim().toLowerCase() === "private"
+      );
+    }
+    renderProjects(filtered);
+  };
+  cards.forEach((card) => {
+    card.addEventListener("click", () => applyFilter(card.dataset.filter || "all"));
+  });
+  applyFilter(state.projectFilter || "all");
 }
 
 function renderTestimonial(t) {
@@ -199,8 +239,23 @@ function hydrateHome(data) {
 }
 
 function hydrateProjects(data) {
-  renderProjects(data.projects);
-  renderStats(data.projectStats);
+  const projects = data.projects || [];
+  state.projects = projects;
+  state.projectFilter = "all";
+  const totalPublic = projects.filter(
+    (p) => (p.tag || "").trim().toLowerCase() === "public"
+  ).length;
+  const totalPrivate = projects.filter(
+    (p) => (p.tag || "").trim().toLowerCase() === "private"
+  ).length;
+  const totalAll = projects.length;
+  const stats = [
+    { label: "Total Project", value: totalAll, desc: "Semua proyek", filter: "all" },
+    { label: "Public Project", value: totalPublic, desc: "Dokumentasi tersedia", filter: "public" },
+    { label: "Private Project", value: totalPrivate, desc: "Dokumentasi tertutup", filter: "private" },
+  ];
+  renderStats(stats);
+  bindProjectFilters();
   renderTestimonial(data.testimonial);
 }
 
