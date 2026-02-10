@@ -175,16 +175,17 @@ function renderInfoCards(list) {
   });
 }
 
-function renderCTA(prefix, data, defaults) {
-  if (!data) data = {};
-  setText(`${prefix}-eyebrow`, data.eyebrow || defaults.eyebrow);
-  setText(`${prefix}-heading`, data.heading || defaults.heading);
-  setText(`${prefix}-primary`, data.primaryText || defaults.primaryText);
-  setText(`${prefix}-secondary`, data.secondaryText || defaults.secondaryText);
+function renderCTA(prefix, data) {
+  if (!data) return;
+  setText(`${prefix}-eyebrow`, data.eyebrow);
+  setText(`${prefix}-heading`, data.heading);
+  setText(`${prefix}-primary`, data.primaryText);
+  setText(`${prefix}-secondary`, data.secondaryText);
 }
 
 function hydrateHome(data) {
   const profile = data.profile || {};
+  setText("hero-eyebrow", profile.eyebrow);
   setText("badge-availability", profile.availability);
   setText("badge-role", profile.roleTag);
   setText("hero-name", profile.name);
@@ -193,12 +194,7 @@ function hydrateHome(data) {
   renderMetrics(profile.metrics);
   renderCertificates(data.certificates);
   renderStrengths(data.strengths);
-  renderCTA("brand", data.ctaBrand, {
-    eyebrow: "Personal brand",
-    heading: "Pengembang yang menyatukan backend rapi, UI elegan, dan delivery tenang.",
-    primaryText: "Ajak berkolaborasi",
-    secondaryText: "Lihat karya",
-  });
+  renderCTA("brand", data.ctaBrand);
   startTyping(profile.typing);
 }
 
@@ -211,23 +207,12 @@ function hydrateProjects(data) {
 function hydrateAbout(data) {
   renderTimeline(data.timeline);
   renderValues(data.values);
-  renderCTA("about", data.ctaBrand, {
-    eyebrow: "Personal brand",
-    heading:
-      "Saya percaya produk terbaik lahir dari fondasi yang rapi, UI yang berkarakter, dan ritme rilis yang tenang.",
-    primaryText: "Ngobrol singkat",
-    secondaryText: "Lihat karya",
-  });
+  renderCTA("about", data.ctaBrand);
 }
 
 function hydrateContact(data) {
   renderInfoCards(data.infoCards);
-  renderCTA("contact", data.contactCTA, {
-    eyebrow: "Terbuka untuk kolaborasi",
-    heading: "Ceritakan konteksmu, saya balas dengan ide cepat dan langkah realistis.",
-    primaryText: "Email sekarang",
-    secondaryText: "Lihat proyek",
-  });
+  renderCTA("contact", data.contactCTA);
 }
 
 /* ---------------------------
