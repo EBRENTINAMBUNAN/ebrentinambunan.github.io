@@ -1,69 +1,31 @@
 {
   "profile": {
-    "eyebrow": "Halo, saya",
     "name": "Ebren Tinambunan",
-    "headline": "Fullstack Developer",
-    "availability": "Siap Remote / Hybrid",
-    "roleTag": "Fullstack Engineer",
-    "lead": "Siap kolaborasi dengan tim kecil maupun perusahaan besar. Terbuka untuk kerja remote maupun hybrid.",
-    "typing": [
-      "Bersedia Remote dan Hybrid",
-      "Indie Web Developer",
-      "Siap Kerja Sama dengan Startup & UMKM",
-      "Siap Join Tim Corporate",
-      "Fokus pada UI/UX yang Nyaman",
-      "Clean Code & Maintainable",
-      "Mendukung Pengembangan Produk Digital",
-      "Terbiasa dengan Kolaborasi Tim & Tools Modern"
-    ],
-    "miniCard": "Mahasiswa · Web Developer",
-    "metrics": [
-      { "label": "Proyek produksi", "value": "20" },
-      { "label": "On-time delivery", "value": "96%" },
-      { "label": "NPS internal", "value": "9/10" }
-    ]
+    "title": "Mahasiswa · Web Developer",
+    "description": "Siap kolaborasi dengan tim kecil maupun perusahaan besar. Terbuka untuk kerja remote maupun hybrid."
   },
+  "typing": [
+    { "id": 1, "title": "Bersedia Remote dan Hybrid" },
+    { "id": 2, "title": "Indie Web Developer" }
+  ],
   "certificates": [
     {
+      "id": 1,
       "title": "AraTechnology",
-      "desc": "Full Stack Web Development",
+      "description": "Full Stack Web Development",
       "image": "assets/img/certificate/aratech.jpg"
     },
     {
+      "id": 2,
       "title": "PKM",
-      "desc": "Pengembangan sistem informasi profil sekolah berbasis laravel",
+      "description": "Pengembangan sistem informasi profil sekolah berbasis laravel",
       "image": "assets/img/certificate/pkm.jpg"
     },
     {
+      "id": 3,
       "title": "Workshop",
-      "desc": "Workshop : Project Work",
+      "description": "Workshop : Project Work",
       "image": "assets/img/certificate/ws1.jpg"
     }
-  ],
-  "strengths": [
-    {
-      "icon": "🧭",
-      "title": "Builder Mindset",
-      "desc": "Mulai dari brief singkat, saya susun arsitektur, alur, dan prioritas yang bisa dieksekusi sprint demi sprint.",
-      "bullets": ["Ship cepat dengan scope terukur", "Struktur modular + catatan 1-2 halaman", "Siap scale tanpa refactor besar"]
-    },
-    {
-      "icon": "✨",
-      "title": "UX-First Implementation",
-      "desc": "Microcopy, ritme spacing, dan interaksi halus agar produk terasa premium namun ringan.",
-      "bullets": ["Mobile-first, animasi seperlunya", "State jelas, error ramah pengguna", "Perf: cache, lazyload, preconnect"]
-    },
-    {
-      "icon": "🛡️",
-      "title": "Operational Calm",
-      "desc": "Setelah rilis tetap tenang: guard input, logging ringkas, SOP rollback 2 menit.",
-      "bullets": ["Checklist rilis dan rollback", "Hardening auth & form", "Handover + changelog untuk tim"]
-    }
-  ],
-  "ctaBrand": {
-    "eyebrow": "Personal brand",
-    "heading": "Pengembang yang menggabungkan backend solid, UI elegan, dan delivery yang tenang.",
-    "primaryText": "Ajak kolaborasi",
-    "secondaryText": "Lihat karya"
-  }
+  ]
 }

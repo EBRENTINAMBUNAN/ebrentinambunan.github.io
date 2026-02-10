@@ -52,7 +52,7 @@ function renderCertificates(list) {
       <img src="${c.image}" alt="${c.title}" class="certificate-img" />
       <div class="certificate-meta">
         <p class="title">${c.title}</p>
-        <p class="desc">${c.desc}</p>
+        <p class="desc">${c.description || c.desc || ""}</p>
       </div>
     `;
     wrap.appendChild(card);
@@ -73,7 +73,7 @@ function renderStrengths(list) {
     card.innerHTML = `
       <div class="service-icon">${s.icon || "•"}</div>
       <h4>${s.title}</h4>
-      <p>${s.desc}</p>
+      <p>${s.description || s.desc || ""}</p>
       <ul>${bullets}</ul>
     `;
     wrap.appendChild(card);
@@ -277,17 +277,18 @@ function renderCTA(prefix, data) {
 
 function hydrateHome(data) {
   const profile = data.profile || {};
-  setText("hero-eyebrow", profile.eyebrow);
-  setText("badge-availability", profile.availability);
-  setText("badge-role", profile.roleTag);
+  const typingList =
+    (data.typing || profile.typing || []).map((t) => (typeof t === "string" ? t : t.title)).filter(Boolean);
+  setText("badge-availability", profile.availability || "");
+  setText("badge-role", profile.roleTag || "");
   setText("hero-name", profile.name);
-  setText("lead-text", profile.lead);
-  setText("mini-card", profile.miniCard);
-  renderMetrics(profile.metrics);
+  setText("lead-text", profile.description || profile.lead || "");
+  setText("mini-card", profile.title || profile.miniCard || "");
+  renderMetrics(data.metrics || profile.metrics);
   renderCertificates(data.certificates);
   renderStrengths(data.strengths);
   renderCTA("brand", data.ctaBrand);
-  startTyping(profile.typing);
+  startTyping(typingList);
 }
 
 function hydrateProjects(data) {
