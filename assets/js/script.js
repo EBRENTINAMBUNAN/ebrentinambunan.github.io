@@ -281,9 +281,10 @@ function hydrateHome(data) {
     (data.typing || profile.typing || []).map((t) => (typeof t === "string" ? t : t.title)).filter(Boolean);
   setText("badge-availability", profile.availability || "");
   setText("badge-role", profile.roleTag || "");
-  setText("hero-name", profile.name);
+  const toUpper = (v) => (v ? String(v).toUpperCase() : "");
+  setText("hero-name", toUpper(profile.name));
   setText("lead-text", profile.description || profile.lead || "");
-  setText("mini-card", profile.title || profile.miniCard || "");
+  setText("mini-card", toUpper(profile.title || profile.miniCard || ""));
   renderMetrics(data.metrics || profile.metrics);
   renderCertificates(data.certificates);
   renderStrengths(data.strengths);

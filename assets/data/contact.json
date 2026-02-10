@@ -1,14 +1,3 @@
 {
-  "infoCards": [
-    { "label": "Response time", "value": "≤ 2 jam", "desc": "Jam kerja: lebih cepat via WhatsApp/Email." },
-    { "label": "Zona waktu", "value": "WIB (GMT+7)", "desc": "Fleksibel kolaborasi remote." },
-    { "label": "Channel", "value": "WA · Email · GMeet", "desc": "Pilih media ternyaman." },
-    { "label": "Bahasa", "value": "ID / EN", "desc": "Siap diskusi bilingual." }
-  ],
-  "contactCTA": {
-    "eyebrow": "Terbuka untuk kolaborasi",
-    "heading": "Ceritakan konteksmu, saya balas dengan ide cepat dan langkah realistis.",
-    "primaryText": "Email sekarang",
-    "secondaryText": "Lihat proyek"
-  }
+
 }
