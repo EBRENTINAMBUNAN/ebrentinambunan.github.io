@@ -63,109 +63,30 @@
         <div class="certificate-grid" id="certificates"></div>
       </div>
     </main>
-    <!-- SPA Templates -->
+    
+    <!-- Proyek -->
     <template id="tpl-projects">
       <div class="section-heading" style="margin-bottom: 1.5rem">
         <h2>Proyek</h2>
         <span class="line"></span>
       </div>
-      <p class="muted" style="margin-bottom: 1.2rem">
-        Berikut beberapa proyek yang pernah saya bangun.
-      </p>
+      <p class="muted" id="projects-intro" style="margin-bottom: 1.2rem"></p>
       <div class="stats-grid" id="project-stats" style="margin-bottom: 1.2rem"></div>
       <div class="divider"></div>
       <div class="card-grid" id="projects-grid"></div>
     </template>
+
+    <!-- tentang saya -->
     <template id="tpl-about">
       <div class="section-heading" style="margin-bottom: 1.4rem">
         <h2>Tentang Saya</h2>
         <span class="line"></span>
       </div>
-      <p class="muted" style="margin-bottom: 1rem">
-        Builder yang fokus ke kualitas—menggabungkan backend yang rapi dengan
-        frontend yang terasa mewah.
-      </p>
-      <div class="about-grid">
-        <div class="glass-card">
-          <h3>Cara kerja</h3>
-          <p>
-            Saya mengutamakan DX (developer experience) untuk menjaga ritme
-            delivery: struktur modul, dokumentasi API singkat, dan pipeline
-            sederhana di server atau Docker. Frontend saya buat komponen-first
-            sehingga mudah di-scale.
-          </p>
-          <p>
-            Delivery cepat tanpa mengorbankan maintainability—memanfaatkan
-            caching, keamanan input, serta monitoring dasar agar produk siap
-            produksi.
-          </p>
-        </div>
-        <div class="glass-card">
-          <h3>Stack utama</h3>
-          <div class="chip-grid">
-            <span class="chip">PHP · Laravel · CI</span>
-            <span class="chip">Tailwind CSS</span>
-            <span class="chip">Bootstrap</span>
-            <span class="chip">MySQL · SQLite · MongoDB</span>
-            <span class="chip">JavaScript · Node.js</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Cloudflare</span>
-            <span class="chip">cPanel</span>
-            <span class="chip">Git · VSCode</span>
-          </div>
-        </div>
-      </div>
-      <div class="tools-grid" style="margin-top: 0.5rem">
-        <div class="tool-card">
-          <h4>Bahasa &amp; Framework</h4>
-          <p>PHP, JavaScript/TypeScript, Python, Go, Dart, Java, C++</p>
-        </div>
-        <div class="tool-card">
-          <h4>DevOps</h4>
-          <p>Docker, cPanel deployment, basic CI/CD, Cloudflare</p>
-        </div>
-        <div class="tool-card">
-          <h4>Workflow</h4>
-          <p>Git, GitHub, Postman, dokumentasi API, unit testing dasar</p>
-        </div>
-      </div>
-      <div class="timeline" id="timeline"></div>
-      <div class="values-grid" id="values-grid"></div>
-      <div style="margin-top: 1.4rem">
-        <a class="btn btn-primary" data-page="projects" href="index.html"
-          >Lihat Proyek</a
-        >
-        <a class="btn btn-ghost" data-page="contact" href="index.html"
-          >Ayo ngobrol</a
-        >
-      </div>
-      <div class="accent-band">
-        <div>
-          <p class="eyebrow" id="about-eyebrow">Personal brand</p>
-          <h3 id="about-heading">
-            Saya percaya produk terbaik lahir dari fondasi yang rapi, UI yang
-            berkarakter, dan ritme rilis yang tenang.
-          </h3>
-        </div>
-        <div class="band-actions">
-          <a
-            class="btn btn-secondary"
-            data-page="projects"
-            href="index.html"
-            id="about-secondary"
-            >Lihat karya</a
-          >
-          <a
-            class="btn btn-primary"
-            data-page="contact"
-            href="index.html"
-            id="about-primary"
-            >Ngobrol singkat</a
-          >
-        </div>
-      </div>
+      <p class="muted" id="about-intro" style="margin-bottom: 1rem"></p>
+      <div class="tools-grid" id="stack-grid" style="margin-top: 0.5rem"></div>
     </template>
+
+    <!-- kontak -->
     <template id="tpl-contact">
       <div class="section-heading" style="margin-bottom: 1.2rem">
         <h2>Kontak</h2>

@@ -215,6 +215,57 @@ function renderInfoCards(list) {
   });
 }
 
+function renderStacks(list) {
+  const wrap = document.getElementById("stack-grid");
+  if (!wrap || !list) return;
+  wrap.innerHTML = "";
+  const groups = list.reduce((acc, item) => {
+    const key = (item.category || "lainnya").toLowerCase();
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  }, {});
+  const titleMap = {
+    "bahasa pemrograman": "Bahasa Pemrograman",
+    framework: "Framework / Library",
+    tools: "Tools & DevOps",
+  };
+  Object.entries(groups).forEach(([cat, items]) => {
+    const card = document.createElement("div");
+    card.className = "tool-card stack-card";
+    const rows = items
+      .map(
+        (i, idx) => `
+          <tr>
+            <td>${idx + 1}</td>
+            <td>${i.name}</td>
+            <td class="level">${i.level}</td>
+          </tr>
+        `
+      )
+      .join("");
+    card.innerHTML = `
+      <div class="stack-card-head">
+        <h4>${titleMap[cat] || cat}</h4>
+        <span class="pill">${items.length} item</span>
+      </div>
+      <table class="stack-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nama</th>
+            <th>Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
 function renderCTA(prefix, data) {
   if (!data) return;
   setText(`${prefix}-eyebrow`, data.eyebrow);
@@ -239,9 +290,26 @@ function hydrateHome(data) {
 }
 
 function hydrateProjects(data) {
-  const projects = data.projects || [];
+  const baseProjects = data.projects || [];
+  const derived =
+    (!baseProjects || baseProjects.length === 0) && data.project
+      ? data.project.flatMap((cat) =>
+          (cat.items || []).map((item) => ({
+            title: item.name,
+            tag: (cat.status || "").charAt(0).toUpperCase() + (cat.status || "").slice(1),
+            summary: item.note || "",
+            role: "",
+            impact: "",
+            image: "assets/img/project.png",
+            demo: "",
+            code: item.doc || "",
+          }))
+        )
+      : baseProjects;
+  const projects = derived;
   state.projects = projects;
   state.projectFilter = "all";
+  setText("projects-intro", data.intro || "Berikut beberapa proyek yang pernah saya bangun.");
   const totalPublic = projects.filter(
     (p) => (p.tag || "").trim().toLowerCase() === "public"
   ).length;
@@ -256,13 +324,13 @@ function hydrateProjects(data) {
   ];
   renderStats(stats);
   bindProjectFilters();
-  renderTestimonial(data.testimonial);
 }
 
 function hydrateAbout(data) {
+  setText("about-intro", data.intro);
+  renderStacks(data.techStacks);
   renderTimeline(data.timeline);
   renderValues(data.values);
-  renderCTA("about", data.ctaBrand);
 }
 
 function hydrateContact(data) {

@@ -1,43 +1,37 @@
 {
-  "projects": [
+  "intro": "Ringkasan proyek berdasarkan visibilitas (public/private) beserta dokumentasinya.",
+  "project": [
     {
-      "title": "Aplikasi Penjualan UMKM",
-      "tag": "Private",
-      "summary": "Dashboard penjualan real-time, manajemen produk, multi-role (pemilik/kasir), disetel agar tetap ringan di jaringan 3G.",
-      "role": "Arsitektur backend, desain UI, implementasi frontend, deployment cPanel + Docker staging.",
-      "impact": "+23% konversi checkout, -40% waktu muat halaman kasir",
-      "image": "assets/img/project.png",
-      "demo": "assets/mp4/project.mp4",
-      "code": "https://github.com/ebrentinambunan"
+      "id": 1,
+      "category": "Public Project",
+      "status": "public",
+      "items": [
+        {
+          "id": 101,
+          "name": "Landing + API Launchpad",
+          "doc": "https://github.com/ebrentinambunan",
+          "note": "Landing + webhook email, open for demo"
+        }
+      ]
     },
     {
-      "title": "Finance Insight Dashboard",
-      "tag": "Private",
-      "summary": "Monitor keuangan harian dengan pengamanan auth, grafik ringan, dan export cepat untuk tim akuntansi.",
-      "role": "Desain data-flow, integrasi API, optimasi query, implementasi charting ringan.",
-      "impact": "0,4% bug escape, laporan siap <3 detik",
-      "image": "assets/img/project.png",
-      "demo": "assets/mp4/project.mp4",
-      "code": "https://github.com/ebrentinambunan"
-    },
-    {
-      "title": "Landing + API Launchpad",
-      "tag": "Public",
-      "summary": "Landing konversi tinggi dengan form early-access terhubung ke API email webhook.",
-      "role": "Copy micro, UI animasi halus, endpoint pendaftaran + email webhook.",
-      "impact": "CTR hero 7,8%, bounce turun 18%",
-      "image": "assets/img/project.png",
-      "demo": "assets/mp4/project.mp4",
-      "code": "https://github.com/ebrentinambunan"
+      "id": 2,
+      "category": "Private Project",
+      "status": "private",
+      "items": [
+        {
+          "id": 201,
+          "name": "Aplikasi Penjualan UMKM",
+          "doc": "",
+          "note": "Request akses via kontak"
+        },
+        {
+          "id": 202,
+          "name": "Finance Insight Dashboard",
+          "doc": "",
+          "note": "Request akses via kontak"
+        }
+      ]
     }
-  ],
-  "projectStats": [
-    { "label": "Page load", "value": "~1.0s", "desc": "Optimasi asset, lazyload, preconnect" },
-    { "label": "Rollback", "value": "< 2 menit", "desc": "Staging + backup sebelum rilis" },
-    { "label": "Hand-off", "value": "Playbook", "desc": "Changelog + panduan ringkas untuk tim" }
-  ],
-  "testimonial": {
-    "quote": "Build cepat dengan UX yang rapi. Dokumentasinya singkat tapi cukup untuk tim langsung pegang.",
-    "name": "Client Retail"
-  }
+  ]
 }

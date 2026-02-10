@@ -1,36 +1,21 @@
 {
-  "timeline": [
-    {
-      "year": "2025",
-      "title": "Micro SaaS eksperimen",
-      "desc": "Rilis MVP < 4 minggu: auth sederhana, billing percobaan, landing konversi tinggi."
-    },
-    {
-      "year": "2024",
-      "title": "SaaS kecil untuk UMKM",
-      "desc": "Modul penjualan & laporan, mobile-first, deployment cPanel + Docker staging."
-    },
-    {
-      "year": "2023",
-      "title": "Internal dashboard",
-      "desc": "Integrasi API, hardening auth, optimasi query untuk laporan keuangan harian."
-    },
-    {
-      "year": "2022",
-      "title": "Onboarding tooling",
-      "desc": "Toolkit onboarding dev + dokumentasi singkat agar ramp-up lebih cepat."
-    }
+  "intro": "Berikut Skill teknis yang saya kuasai dan pelajari selama bertahun tahun : ",
+  "abouts": [],
+  "techStacks": [
+    { "id": 1, "category": "bahasa pemrograman", "name": "PHP", "level": "advance" },
+    { "id": 2, "category": "bahasa pemrograman", "name": "JavaScript", "level": "advance" },
+    { "id": 3, "category": "bahasa pemrograman", "name": "TypeScript", "level": "intermediate" },
+    { "id": 4, "category": "bahasa pemrograman", "name": "Go", "level": "intermediate" },
+    { "id": 5, "category": "framework", "name": "Laravel", "level": "advance" },
+    { "id": 6, "category": "framework", "name": "Express.js", "level": "intermediate" },
+    { "id": 7, "category": "framework", "name": "Tailwind CSS", "level": "advance" },
+    { "id": 8, "category": "framework", "name": "Bootstrap", "level": "advance" },
+    { "id": 9, "category": "tools", "name": "Docker", "level": "intermediate" },
+    { "id": 10, "category": "tools", "name": "Git", "level": "advance" },
+    { "id": 11, "category": "tools", "name": "Cloudflare", "level": "intermediate" },
+    { "id": 12, "category": "tools", "name": "MySQL", "level": "advance" }
   ],
-  "values": [
-    { "title": "Transparan", "desc": "Progress rutin, demo build, changelog padat." },
-    { "title": "Pragmatis", "desc": "Pilih tool secukupnya; mudah di-maintain tim Anda." },
-    { "title": "Ketahanan", "desc": "Fokus performa, keamanan input, dan fallback." },
-    { "title": "Empati", "desc": "UX ramah pengguna, handover ramah developer." }
-  ],
-  "ctaBrand": {
-    "eyebrow": "Personal brand",
-    "heading": "Produk terbaik lahir dari fondasi rapi, UI berkarakter, dan ritme rilis yang tenang.",
-    "primaryText": "Ngobrol singkat",
-    "secondaryText": "Lihat karya"
-  }
+  "timeline": [],
+  "values": [],
+  "ctaBrand": {}
 }
