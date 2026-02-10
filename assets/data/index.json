@@ -4,15 +4,18 @@
     "headline": "Fullstack Developer",
     "availability": "Siap Remote / Hybrid",
     "roleTag": "Fullstack Engineer",
-    "lead": "Saya merancang produk web dari ide ke rilis: fondasi backend rapi, UI mobile-first yang terasa premium, dan dokumentasi singkat agar tim cepat mandiri.",
+    "lead": "Siap kolaborasi dengan tim kecil maupun perusahaan besar. Terbuka untuk kerja remote maupun hybrid.",
     "typing": [
-      "Builder yang senang bikin jalan setapak jadi jalan tol.",
-      "Laravel + Tailwind + Docker: trio andalan untuk rilis cepat.",
-      "UX mulus, performa stabil, rilis tanpa drama.",
-      "Ship cepat, ukur, iterasi—dengan changelog yang jelas.",
-      "Nyaman kolaborasi lintas zona: ID & EN."
+      "Bersedia Remote dan Hybrid",
+      "Indie Web Developer",
+      "Siap Kerja Sama dengan Startup & UMKM",
+      "Siap Join Tim Corporate",
+      "Fokus pada UI/UX yang Nyaman",
+      "Clean Code & Maintainable",
+      "Mendukung Pengembangan Produk Digital",
+      "Terbiasa dengan Kolaborasi Tim & Tools Modern"
     ],
-    "miniCard": "Laravel · Tailwind · Docker · Cloudflare · cPanel · CI/CD",
+    "miniCard": "Mahasiswa · Web Developer",
     "metrics": [
       { "label": "Proyek produksi", "value": "20" },
       { "label": "On-time delivery", "value": "96%" },
@@ -21,19 +24,19 @@
   },
   "certificates": [
     {
-      "title": "IMPHNEN",
-      "desc": "Data & API fundamentals",
-      "image": "assets/img/certificate1.png"
+      "title": "AraTechnology",
+      "desc": "Full Stack Web Development",
+      "image": "assets/img/certificate/aratech.jpg"
     },
     {
-      "title": "Dicoding",
-      "desc": "Back-End Pemula",
-      "image": "assets/img/certificate1.png"
+      "title": "PKM",
+      "desc": "Pengembangan sistem informasi profil sekolah berbasis laravel",
+      "image": "assets/img/certificate/pkm.jpg"
     },
     {
-      "title": "FreeCodeCamp",
-      "desc": "Responsive Web Design",
-      "image": "assets/img/certificate1.png"
+      "title": "Workshop",
+      "desc": "Workshop : Project Work",
+      "image": "assets/img/certificate/ws1.jpg"
     }
   ],
   "strengths": [

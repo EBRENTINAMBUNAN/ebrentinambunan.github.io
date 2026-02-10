@@ -1,168 +1,3 @@
-const fallbackIndex = {
-  profile: {
-    name: "Ebren Tinambunan",
-    headline: "Fullstack Developer",
-    availability: "Siap Remote / Hybrid",
-    roleTag: "Fullstack Engineer",
-    lead: "Berjiwa indie, siap kolaborasi dengan tim kecil maupun perusahaan besar. Bersedia remote dan hybrid.",
-    typing: [
-      "Bersedia Remote dan Hybrid",
-      "Indie Web Developer",
-      "Siap Kerja Sama dengan Startup & UMKM",
-      "Siap Join Tim Corporate",
-      "Fokus pada UI/UX yang Nyaman",
-      "Clean Code & Maintainable",
-      "Mendukung Pengembangan Produk Digital",
-      "Terbiasa dengan Kolaborasi Tim & Tools Modern"
-    ],
-    miniCard: "Mahasiswa · Web Developer",
-    metrics: [
-      { label: "Proyek produksi", value: "20" },
-      { label: "On-time delivery", value: "96%" },
-      { label: "NPS internal", value: "9/10" },
-    ],
-  },
-  certificates: [
-    {
-      title: "AraTechnology",
-      desc: "Full Stack Web Development",
-      image: "assets/img/certificate/aratech.jpg",
-    },
-    {
-      title: "PKM",
-      desc: "Pengembangan sistem informasi profil sekolah berbasis laravel",
-      image: "assets/img/certificate/pkm.jpg",
-    },
-    {
-      title: "Workshop",
-      desc: "Workshop : Project Work",
-      image: "assets/img/certificate/ws1.jpg",
-    },
-  ],
-  strengths: [
-    {
-      icon: "🧭",
-      title: "Builder Mindset",
-      desc: "Mulai dari brief singkat, saya susun arsitektur, alur, dan prioritas yang bisa dieksekusi sprint demi sprint.",
-      bullets: ["Ship cepat dengan scope terukur", "Struktur modular + catatan 1-2 halaman", "Siap scale tanpa refactor besar"],
-    },
-    {
-      icon: "✨",
-      title: "UX-First Implementation",
-      desc: "Microcopy, ritme spacing, dan interaksi halus agar produk terasa premium namun ringan.",
-      bullets: ["Mobile-first, animasi seperlunya", "State jelas, error ramah pengguna", "Perf: cache, lazyload, preconnect"],
-    },
-    {
-      icon: "🛡️",
-      title: "Operational Calm",
-      desc: "Setelah rilis tetap tenang: guard input, logging ringkas, SOP rollback 2 menit.",
-      bullets: ["Checklist rilis dan rollback", "Hardening auth & form", "Handover + changelog untuk tim"],
-    },
-  ],
-  ctaBrand: {
-    eyebrow: "Personal brand",
-    heading: "Pengembang yang menggabungkan backend solid, UI elegan, dan delivery yang tenang.",
-    primaryText: "Ajak kolaborasi",
-    secondaryText: "Lihat karya",
-  },
-};
-
-const fallbackProjects = {
-  projects: [
-    {
-      title: "Aplikasi Penjualan UMKM",
-      tag: "Web App · Responsive",
-      summary: "Dashboard penjualan real-time, manajemen produk, multi-role (pemilik/kasir), disetel agar tetap ringan di jaringan 3G.",
-      role: "Arsitektur backend, desain UI, implementasi frontend, deployment cPanel + Docker staging.",
-      impact: "+23% konversi checkout, -40% waktu muat halaman kasir",
-      image: "assets/img/project.png",
-      demo: "assets/mp4/project.mp4",
-      code: "https://github.com/ebrentinambunan",
-    },
-    {
-      title: "Finance Insight Dashboard",
-      tag: "Dashboard · API",
-      summary: "Monitor keuangan harian dengan pengamanan auth, grafik ringan, dan export cepat untuk tim akuntansi.",
-      role: "Desain data-flow, integrasi API, optimasi query, implementasi charting ringan.",
-      impact: "0,4% bug escape, laporan siap <3 detik",
-      image: "assets/img/project.png",
-      demo: "assets/mp4/project.mp4",
-      code: "https://github.com/ebrentinambunan",
-    },
-    {
-      title: "Landing + API Launchpad",
-      tag: "Landing · Backend",
-      summary: "Landing konversi tinggi dengan form early-access terhubung ke API email webhook.",
-      role: "Copy micro, UI animasi halus, endpoint pendaftaran + email webhook.",
-      impact: "CTR hero 7,8%, bounce turun 18%",
-      image: "assets/img/project.png",
-      demo: "assets/mp4/project.mp4",
-      code: "https://github.com/ebrentinambunan",
-    },
-  ],
-  projectStats: [
-    { label: "Page load", value: "~1.0s", desc: "Optimasi asset, lazyload, dan preconnect" },
-    { label: "Rollback", value: "< 2 menit", desc: "Staging + backup ringan sebelum rilis" },
-    { label: "Hand-off", value: "Playbook", desc: "Catatan singkat untuk tim operasional" },
-  ],
-  testimonial: {
-    quote: "Build cepat dengan UX yang rapi. Dokumentasinya singkat tapi cukup untuk tim langsung pegang.",
-    name: "Client Retail",
-  },
-};
-
-const fallbackAbout = {
-  timeline: [
-    {
-      year: "2025",
-      title: "Micro SaaS eksperimen",
-      desc: "Merilis MVP < 4 minggu: auth sederhana, billing percobaan, dan landing konversi tinggi.",
-    },
-    {
-      year: "2024",
-      title: "SaaS kecil untuk UMKM",
-      desc: "Bangun modul penjualan & laporan dengan fokus mobile-first dan deployment cPanel + Docker staging.",
-    },
-    {
-      year: "2023",
-      title: "Internal dashboard",
-      desc: "Integrasi API, hardening auth, dan optimasi query untuk laporan keuangan harian.",
-    },
-    {
-      year: "2022",
-      title: "Onboarding tooling",
-      desc: "Menyusun toolkit onboarding dev + dokumentasi singkat agar ramp-up lebih cepat.",
-    },
-  ],
-  values: [
-    { title: "Transparan", desc: "Progress rutin, demo build, changelog padat." },
-    { title: "Pragmatis", desc: "Pakai tool secukupnya; mudah di-maintain tim Anda." },
-    { title: "Ketahanan", desc: "Fokus ke performa, keamanan input, dan fallback." },
-    { title: "Empati", desc: "UI yang ramah pengguna dan dev handover yang ramah tim." },
-  ],
-  ctaBrand: {
-    eyebrow: "Personal brand",
-    heading: "Saya percaya produk terbaik lahir dari fondasi yang rapi, UI yang berkarakter, dan ritme rilis yang tenang.",
-    primaryText: "Ngobrol singkat",
-    secondaryText: "Lihat karya",
-  },
-};
-
-const fallbackContact = {
-  infoCards: [
-    { label: "Response time", value: "≤ 2 jam", desc: "Di jam kerja, lebih cepat via WhatsApp/Email." },
-    { label: "Zona waktu", value: "WIB (GMT+7)", desc: "Fleksibel untuk kolaborasi remote." },
-    { label: "Channel", value: "WA · Email · GMeet", desc: "Pilih media yang paling nyaman." },
-    { label: "Bahasa", value: "ID / EN", desc: "Bisa kolaborasi bilingual." },
-  ],
-  contactCTA: {
-    eyebrow: "Terbuka untuk kolaborasi",
-    heading: "Ceritakan konteksmu, saya balas dengan ide cepat dan langkah realistis.",
-    primaryText: "Email sekarang",
-    secondaryText: "Lihat proyek",
-  },
-};
-
 const state = { typingPhrases: [] };
 const pageCache = new Map(); // { page: { html, title, page } }
 const pageTitles = {
@@ -175,14 +10,14 @@ const pageOrder = ["home", "projects", "about", "contact"];
 let currentPage = null;
 let isNavigating = false;
 
-async function loadJson(path, fallback) {
+async function loadJson(path) {
   try {
     const res = await fetch(path);
-    if (!res.ok) throw new Error("not ok");
+    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
     return await res.json();
   } catch (err) {
-    console.warn(`Gagal memuat ${path}, gunakan fallback`, err);
-    return fallback;
+    console.warn(`Gagal memuat ${path}`, err);
+    return {};
   }
 }
 
@@ -648,27 +483,27 @@ function getTemplateHTML(page) {
 async function hydrateForPage(page) {
   resetTyping();
   if (page === "home") {
-    const data = await loadJson("assets/data/index.json", fallbackIndex);
-    state.typingPhrases = data.profile?.typing || fallbackIndex.profile.typing;
+    const data = await loadJson("assets/data/index.json");
+    state.typingPhrases = data.profile?.typing || [];
     hydrateHome(data);
     initMusic();
     return;
   }
 
   if (page === "projects") {
-    const data = await loadJson("assets/data/projects.json", fallbackProjects);
+    const data = await loadJson("assets/data/projects.json");
     hydrateProjects(data);
     return;
   }
 
   if (page === "about") {
-    const data = await loadJson("assets/data/about.json", fallbackAbout);
+    const data = await loadJson("assets/data/about.json");
     hydrateAbout(data);
     return;
   }
 
   if (page === "contact") {
-    const data = await loadJson("assets/data/contact.json", fallbackContact);
+    const data = await loadJson("assets/data/contact.json");
     hydrateContact(data);
   }
 }
