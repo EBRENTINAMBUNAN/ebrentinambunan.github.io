@@ -101,6 +101,7 @@ function renderProjects(list) {
           <h4>${p.title}</h4>
           <span class="card-chip ${chipClass}">${p.tag || ""}</span>
         </div>
+        <p class="muted">${p.summary || ""}</p>
         ${
           showDoc
             ? `<div class="card-actions">
@@ -297,16 +298,31 @@ function hydrateProjects(data) {
           (cat.items || []).map((item) => ({
             title: item.name,
             tag: (cat.status || "").charAt(0).toUpperCase() + (cat.status || "").slice(1),
-            summary: item.note || "",
+            summary: item.description || item.note || "",
             role: "",
             impact: "",
             image: "assets/img/project.png",
             demo: "",
-            code: item.doc || "",
+            code: item.doc || item.docs || "",
           }))
         )
       : baseProjects;
-  const projects = derived;
+
+  // Normalize flat project structure (name/status/description/docs) to card format
+  const projects = derived.map((p) => ({
+    title: p.title || p.name || "-",
+    tag:
+      p.tag ||
+      (p.status
+        ? `${p.status}`.charAt(0).toUpperCase() + `${p.status}`.slice(1)
+        : ""),
+    summary: p.summary || p.description || "",
+    role: p.role || "",
+    impact: p.impact || "",
+    image: p.image || "assets/img/project.png",
+    demo: p.demo || "",
+    code: p.code || p.docs || "",
+  }));
   state.projects = projects;
   state.projectFilter = "all";
   setText("projects-intro", data.intro || "Berikut beberapa proyek yang pernah saya bangun.");

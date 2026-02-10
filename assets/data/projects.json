@@ -1,37 +1,29 @@
 {
   "intro": "Ringkasan proyek berdasarkan visibilitas (public/private) beserta dokumentasinya.",
-  "project": [
+  "projects": [
     {
       "id": 1,
       "category": "Public Project",
       "status": "public",
-      "items": [
-        {
-          "id": 101,
-          "name": "Landing + API Launchpad",
-          "doc": "https://github.com/ebrentinambunan",
-          "note": "Landing + webhook email, open for demo"
-        }
-      ]
+      "name": "Landing + API Launchpad",
+      "docs": "https://github.com/ebrentinambunan",
+      "description": "Landing + webhook email, open for demo"
     },
     {
       "id": 2,
       "category": "Private Project",
       "status": "private",
-      "items": [
-        {
-          "id": 201,
-          "name": "Aplikasi Penjualan UMKM",
-          "doc": "",
-          "note": "Request akses via kontak"
-        },
-        {
-          "id": 202,
-          "name": "Finance Insight Dashboard",
-          "doc": "",
-          "note": "Request akses via kontak"
-        }
-      ]
+      "name": "Aplikasi Penjualan UMKM",
+      "docs": "",
+      "description": "Request akses via kontak"
+    },
+    {
+      "id": 3,
+      "category": "Private Project",
+      "status": "private",
+      "name": "Finance Insight Dashboard",
+      "docs": "",
+      "description": "Request akses via kontak"
     }
   ]
 }
