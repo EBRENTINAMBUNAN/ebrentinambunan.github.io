@@ -354,6 +354,10 @@ function hydrateAbout(data) {
 function hydrateContact(data) {
   renderInfoCards(data.infoCards);
   renderCTA("contact", data.contactCTA);
+  const intro = document.getElementById("contact-intro");
+  if (intro && data.intro) {
+    intro.textContent = data.intro;
+  }
 }
 
 /* ---------------------------

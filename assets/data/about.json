@@ -1,18 +1,58 @@
 {
-  "intro": "Berikut Skill teknis yang saya kuasai dan pelajari selama bertahun tahun : ",
+  "intro": "Selama bertahun-tahun, saya terus mengembangkan diri di bidang berikut. Inilah keterampilan teknis yang saat ini saya kuasai:",
   "abouts": [],
   "techStacks": [
-    { "id": 1, "category": "bahasa pemrograman", "name": "PHP", "level": "advance" },
-    { "id": 2, "category": "bahasa pemrograman", "name": "JavaScript", "level": "advance" },
-    { "id": 3, "category": "bahasa pemrograman", "name": "TypeScript", "level": "intermediate" },
-    { "id": 4, "category": "bahasa pemrograman", "name": "Go", "level": "intermediate" },
+    {
+      "id": 1,
+      "category": "bahasa pemrograman",
+      "name": "PHP",
+      "level": "advance"
+    },
+    {
+      "id": 2,
+      "category": "bahasa pemrograman",
+      "name": "JavaScript",
+      "level": "advance"
+    },
+    {
+      "id": 3,
+      "category": "bahasa pemrograman",
+      "name": "TypeScript",
+      "level": "intermediate"
+    },
+    {
+      "id": 4,
+      "category": "bahasa pemrograman",
+      "name": "Go",
+      "level": "intermediate"
+    },
     { "id": 5, "category": "framework", "name": "Laravel", "level": "advance" },
-    { "id": 6, "category": "framework", "name": "Express.js", "level": "intermediate" },
-    { "id": 7, "category": "framework", "name": "Tailwind CSS", "level": "advance" },
-    { "id": 8, "category": "framework", "name": "Bootstrap", "level": "advance" },
+    {
+      "id": 6,
+      "category": "framework",
+      "name": "Express.js",
+      "level": "intermediate"
+    },
+    {
+      "id": 7,
+      "category": "framework",
+      "name": "Tailwind CSS",
+      "level": "advance"
+    },
+    {
+      "id": 8,
+      "category": "framework",
+      "name": "Bootstrap",
+      "level": "advance"
+    },
     { "id": 9, "category": "tools", "name": "Docker", "level": "intermediate" },
     { "id": 10, "category": "tools", "name": "Git", "level": "advance" },
-    { "id": 11, "category": "tools", "name": "Cloudflare", "level": "intermediate" },
+    {
+      "id": 11,
+      "category": "tools",
+      "name": "Cloudflare",
+      "level": "intermediate"
+    },
     { "id": 12, "category": "tools", "name": "MySQL", "level": "advance" }
   ],
   "timeline": [],
